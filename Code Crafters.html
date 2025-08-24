@@ -155,6 +155,38 @@
       .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
     }
+
+     .des-card{
+      background:#fff;
+      border-radius:15px;
+      padding:20px;
+      transition:transform .3s ease, box-shadow .3s ease;
+      box-shadow:0 4px 12px rgba(0,0,0,0.06);
+      height:100%;
+    }
+    .des-card:hover{
+      transform:translateY(-8px) scale(1.03);
+      box-shadow:0 12px 24px rgba(230,0,0,0.18);
+    }
+    .profile-img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+      border-radius:12px;
+    }
+    .social-icons i{
+      margin:0 6px;
+      font-size:1.2rem;
+      color:var(--ink-2);
+      transition:all .25s ease;
+      cursor:pointer;
+    }
+    .social-icons i:hover{
+      color:var(--brand-red);
+      transform:translateY(-3px) scale(1.1);
+      text-shadow:0 0 12px rgba(230,0,0,.2);
+    }
+
   </style>
 </head>
 <body>
@@ -198,26 +230,174 @@
   </div>
 
   <!-- Hero -->
-  <div class="container hero-section">
-    <div class="row align-items-center g-4">
-      <div class="col-md-4 hero-image">
-        <img src="Files/firstaid pic.jpg" alt="Medical Help">
-      </div>
-      <div class="col-md-8">
-        <h2 class="fw-bold mb-3">Immediate Help at Your Fingertips</h2>
-        <p>In a medical emergency, every second counts. Our app provides instant guidance and support to help you stay calm and take the right actions.</p>
-   <div class="mt-4 d-flex justify-content-center">
-  <button class="btn btn-emergency me-2" onclick="window.location.href='instructions.html'">
-    Start Emergency Guide
-  </button>
-  <button onclick="window.location.href='chatbot.html'" class="btn btn-ask-ai">
-    Ask AI
-  </button>
-</div>
-
-      </div>
+    <div class="container py-5">
+        <div class="row g-4">
+            <h3 class="card-title text-center mb-2">⚡ MEET THE VISIONARIES OF CODE CRAFTERS 🎨💻</h3>
+            <h6 class="text-center mb-2">Welcome to the innovation engine behind AI Medic — Code Crafters. 💡</h6>
+            <p class="mypara text-center mb-2">Our team of front-end specialists is dedicated to transforming complex healthcare ideas into intuitive digital experiences. Whether it's building responsive interfaces or optimizing mobile accessibility, every interaction is crafted to support better outcomes and user satisfaction. Explore the tech talent driving the future of digital health. 🚀✨</p>
+            <!-- ZARA IQBAL INTRO -->
+            <div class="col-md-4 col-12">
+                <div class="des-card text-center">
+                    <img src="Files/Zara.jpg" class="profile-img" alt="Profile Picture">
+                    <hr>
+                    <h4 class="card-title">ZARA IQBAL</h4>
+                    <hr>
+                    <p>I turn visionary ideas into captivating digital realities through modern, responsive web design.
+                        With a sharp eye for detail and user behavior, I simplify complexity into sleek, intuitive
+                        interfaces that not only look stunning but feel effortless to use. Every pixel I design aims to
+                        engage, inspire, and elevate the user experience to its fullest potential.</p>
+                    <p class="skills">
+                        <i class="fab fa-html5 text-danger"></i> HTML &nbsp;
+                        <i class="fab fa-css3-alt text-primary"></i> CSS &nbsp;
+                        <i class="fab fa-js-square text-warning"></i> JavaScript &nbsp;
+                        <i class="bi bi-bootstrap-fill text-purple"></i> Bootstrap &nbsp;
+                        <i class="fab fa-js-square text-info"></i> jQuery &nbsp;
+                        <i class="fas fa-palette text-success"></i> UI/UX &nbsp;
+                        <i class="fas fa-magic text-teal"></i> GSAP
+                    </p>
+                    <hr>
+                    <div class="social-icons">
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal1"><i class="fas fa-phone"></i></span>
+                        <a href="https://www.facebook.com/profile.php?id=61557016803993" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal1"><i
+                                class="fab fa-whatsapp"></i></span>
+                        <a href="https://www.linkedin.com/in/zara-iqbal-1a148a35b/" target="_blank"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/ZaraIqbal19" target="_blank"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- MAAZ ALAM INTRO -->
+            <div class="col-md-4 col-12">
+                <div class="des-card text-center">
+                    <img src="Files/Maaz.jpg" class="profile-img" alt="Profile Picture">
+                    <hr>
+                    <h4 class="card-title">MAAZ ALAM</h4>
+                    <hr>
+                    <p>I'm a passionate Front-end Developer dedicated to building visually stunning, user-focused
+                        interfaces. With a strong eye for design and a love for responsive layouts, I transform ideas
+                        into smooth, interactive web experiences. From clean code to captivating UI/UX, I aim to make
+                        every click feel effortless and engaging.</p>
+                    <p class="skills">
+                        <i class="fab fa-html5 text-danger"></i> HTML &nbsp;
+                        <i class="fab fa-css3-alt text-primary"></i> CSS &nbsp;
+                        <i class="fab fa-js-square text-warning"></i> JavaScript &nbsp;
+                        <i class="bi bi-bootstrap-fill text-purple"></i> Bootstrap &nbsp;
+                        <i class="fab fa-js-square text-info"></i> jQuery &nbsp;
+                        <i class="fas fa-palette text-success"></i> UI/UX &nbsp;
+                        <i class="fas fa-magic text-teal"></i> GSAP
+                    </p>
+                    <hr>
+                    <div class="social-icons">
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal2"><i class="fas fa-phone"></i></span>
+                        <a href="https://www.facebook.com/share/16k45WU8Kb/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal2"><i
+                                class="fab fa-whatsapp"></i></span>
+                        <a href="https://www.linkedin.com/in/maaz-alam-9a232834b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Maaz-alam2508" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/maaz.alam_._25?igsh=a2xhcGFtMjNwNnI3" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!-- MUHAMMAD FAHEEM INTRO -->
+            <div class="col-md-4 col-12">
+                <div class="des-card text-center">
+                    <img src="Files/Faheem.jpg" class="profile-img" alt="Profile Picture">
+                    <hr>
+                    <h4 class="card-title">MUHAMMAD FAHEEM</h4>
+                    <hr>
+                    <p>I'm a passionate Front-end Developer dedicated to building visually stunning, user-focused
+                        interfaces. With a strong eye for design and a love for responsive layouts, I transform ideas
+                        into smooth, interactive web experiences. From clean code to captivating UI/UX, I aim to make
+                        every click feel effortless and engaging.</p>
+                    <p class="skills">
+                        <i class="fab fa-html5 text-danger"></i> HTML &nbsp;
+                        <i class="fab fa-css3-alt text-primary"></i> CSS &nbsp;
+                        <i class="fab fa-js-square text-warning"></i> JavaScript &nbsp;
+                        <i class="bi bi-bootstrap-fill text-purple"></i> Bootstrap &nbsp;
+                        <i class="fab fa-js-square text-info"></i> jQuery &nbsp;
+                        <i class="fas fa-palette text-success"></i> UI/UX &nbsp;
+                        <i class="fas fa-magic text-teal"></i> GSAP
+                    </p>
+                    <hr>
+                    <div class="social-icons">
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal3"><i class="fas fa-phone"></i></span>
+                        <a href="https://www.facebook.com/share/1B6fUkoZw5/" target="_blank"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <span data-bs-toggle="modal" data-bs-target="#phoneModal3"><i
+                                class="fab fa-whatsapp"></i></span>
+                        <a href="https://www.linkedin.com/in/faheem-waseem-072698354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                            target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/faheem-8920/" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.instagram.com/itx_faheem_07?igsh=MWVwMGc5cXd0c21kbQ==" target="_blank"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+    <!-- MODAL 1 (ZARA IQBAL) -->
+    <div class="modal fade" id="phoneModal1" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-info border border-info">
+                <div class="modal-header border-info">
+                    <h5 class="modal-title text-center">💬 Contact Zara Iqbal Instantly – Call or Message on WhatsApp
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Mobile Number: +92 311 3861056
+                </div>
+                <div class="modal-footer border-info">
+                    <button class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+    <!-- MODAL 2 (MAAZ ALAM) -->
+    <div class="modal fade" id="phoneModal2" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-info border border-info">
+                <div class="modal-header border-info">
+                    <h5 class="modal-title text-center">💬 Contact Maaz Alam Instantly – Call or Message on WhatsApp
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Mobile Number: +92 337 6267599
+                </div>
+                <div class="modal-footer border-info">
+                    <button class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MODAL 3 (FAHEEM) -->
+    <div class="modal fade" id="phoneModal3" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-dark text-info border border-info">
+                <div class="modal-header border-info">
+                    <h5 class="modal-title text-center">💬 Contact Muhammad Faheem Instantly – Call or Message on
+                        WhatsApp</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Mobile Number: +92 337 8068650
+                </div>
+                <div class="modal-footer border-info">
+                    <button class="btn btn-outline-info" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </div>
 
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
@@ -280,7 +460,7 @@
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
-      }, 1200);
+      }, 600);
     });
     // Live Clock
     setInterval(() => {

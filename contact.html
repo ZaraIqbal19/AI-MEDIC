@@ -198,26 +198,62 @@
   </div>
 
   <!-- Hero -->
-  <div class="container hero-section">
-    <div class="row align-items-center g-4">
-      <div class="col-md-4 hero-image">
-        <img src="Files/firstaid pic.jpg" alt="Medical Help">
-      </div>
-      <div class="col-md-8">
-        <h2 class="fw-bold mb-3">Immediate Help at Your Fingertips</h2>
-        <p>In a medical emergency, every second counts. Our app provides instant guidance and support to help you stay calm and take the right actions.</p>
-   <div class="mt-4 d-flex justify-content-center">
-  <button class="btn btn-emergency me-2" onclick="window.location.href='instructions.html'">
-    Start Emergency Guide
-  </button>
-  <button onclick="window.location.href='chatbot.html'" class="btn btn-ask-ai">
-    Ask AI
-  </button>
-</div>
+ <div class="container py-5">
+    <div class="row g-4">   
+        <div class="col-lg-5 col-md-12">
+            <div class="p-4 border rounded shadow-sm h-100 d-flex flex-column">
+                <h5>Contact Information</h5>
+                <div class="contact-info mb-3">
+                    <p><i class="fa-solid fa-envelope me-2"></i>aimedic807@gmail.com</p>
+                    <p><i class="fa-solid fa-phone me-2"></i>+92 300 1234567</p>
+                    <p><i class="fa-solid fa-location-dot me-2"></i>Scheme 33, Karachi, Pakistan</p>
+                    <p><i class="fa-regular fa-clock me-2"></i>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                </div>
 
-      </div>
+                
+                <div class="mb-3">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.291030099906!2d67.06432831500147!3d24.900571984050026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f9a9d4c37df%3A0x845f0a61d4f1c5f4!2sScheme%2033%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s"
+                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+
+                
+                <div class="social-links text-center">
+                    <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-lg me-2"></i></a>
+                    <a href="https://www.whatsapp.com/"><i class="fa-brands fa-whatsapp fa-lg me-2"></i></a>
+                    <a href="http://linkedin.com/"><i class="fa-brands fa-linkedin fa-lg me-2"></i></a>
+                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="col-lg-7 col-md-12">
+            <div class="p-4 border rounded shadow-sm h-100">
+                <h2>We're here to help</h2>
+                <p>If you have any questions, feedback, or need support, please reach out. We're committed to providing you with the best possible assistance.</p>
+
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Subject" required>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                </form>
+            </div>
+        </div>
+
     </div>
-  </div>
+</div>
 
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
@@ -244,7 +280,7 @@
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
           <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
           <p class="text-dark-50"><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
-          <p class="text-dark-50"><i class="fas fa-envelope me-2 mb-2"></i> aimedic807@gmail.com</p>
+          <p class="text-dark-50"><i class="fas fa-envelope me-2 mb-2"></i> support@aimedic.pk</p>
           <p class="text-dark-50"><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
         </div>
 
@@ -280,7 +316,7 @@
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
-      }, 1200);
+      }, 600);
     });
     // Live Clock
     setInterval(() => {

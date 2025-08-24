@@ -198,24 +198,175 @@
   </div>
 
   <!-- Hero -->
-  <div class="container hero-section">
-    <div class="row align-items-center g-4">
-      <div class="col-md-4 hero-image">
-        <img src="Files/firstaid pic.jpg" alt="Medical Help">
-      </div>
-      <div class="col-md-8">
-        <h2 class="fw-bold mb-3">Immediate Help at Your Fingertips</h2>
-        <p>In a medical emergency, every second counts. Our app provides instant guidance and support to help you stay calm and take the right actions.</p>
-   <div class="mt-4 d-flex justify-content-center">
-  <button class="btn btn-emergency me-2" onclick="window.location.href='instructions.html'">
-    Start Emergency Guide
-  </button>
-  <button onclick="window.location.href='chatbot.html'" class="btn btn-ask-ai">
-    Ask AI
-  </button>
-</div>
+  <div class="container my-5">
+    <!-- Page Title -->
+    <h2 class="text-center mb-4 fw-bold">Emergency Ready: Life-Saving Skills with Nothing but You!</h2>
+    <h5 class="text-center mb-4">Quick Fixes, No Gear Needed: Life-Saving Actions with Just Your Hands and Head</h5>
+    <p class="text-center mb-4">In everyday emergencies, the most powerful tools are already with you—your hands and your head. From stopping bleeding to clearing airways or calming someone in distress, quick, confident action can make all the difference. No gadgets, no panic—just smart, simple steps that save lives. Be ready, anytime, anywhere.</p>
 
+    <!-- Search Box -->
+    <div class="mb-5">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search emergencies...">
+    </div>
+
+    <!-- Emergency Cards Grid -->
+    <div class="row g-4" id="emergencyCards">
+
+      <!-- Baby Choking -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="baby choking">
+        <a href="infantchoking.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Infant_Choking-removebg-preview.png" class="card-img-top" alt="Baby Choking">
+          <div class="card-body">
+            <h5 class="card-title">👶 Infant Choking (Under 1 Year Old)</h5>
+            <p class="card-text">👶 5 back blows ➕ 5 chest thrusts = Infant safe! ❌ No Heimlich!</p>
+          </div>
+        </a>
       </div>
+
+      <!-- Teen/Adult Choking -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="teen choking">
+        <a href="teenchoking.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Adult_Choking-removebg-preview.png" class="card-img-top" alt="Teen Choking">
+          <div class="card-body">
+            <h5 class="card-title">🧑‍🤝‍🧑 Choking Rescue for Teens & Adults</h5>
+            <p class="card-text">👋➕🤜 Give back blows and abdominal thrusts (Heimlich) until the airway is clear
+            </p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Nosebleeds -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="nosebleeds">
+        <a href="nosebleeds.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Nose_Bleed-removebg-preview.png" class="card-img-top" alt="Nosebleeds">
+          <div class="card-body">
+            <h5 class="card-title">🤕 Nosebleeds</h5>
+            <p class="card-text">Tilt head forward, pinch nostrils, apply cold compress if available.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Fainting/Dizziness -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="fainting dizziness">
+        <a href="fainting.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Fainting-removebg-preview.png" class="card-img-top" alt="Fainting">
+          <div class="card-body">
+            <h5 class="card-title">😵 Fainting / Dizziness</h5>
+            <p class="card-text">Lay flat, raise legs, loosen clothing, ensure fresh air.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Minor Cuts & Scrapes -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="minor cuts scrapes">
+        <a href="cuts.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Cuts_Scrapes-removebg-preview.png" class="card-img-top" alt="Minor Cuts">
+          <div class="card-body">
+            <h5 class="card-title">🩹 Minor Cuts & Scrapes</h5>
+            <p class="card-text">Clean with water, press to stop bleeding, cover with cloth/bandage.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Minor Burns -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="minor burns">
+        <a href="burns.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Minor_Burn-removebg-preview.png" class="card-img-top" alt="Burns">
+          <div class="card-body">
+            <h5 class="card-title">🔥 Minor Burns</h5>
+            <p class="card-text">Run cool water 10–15 mins, cover loosely, no ice/butter.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Seizure -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="seizure epilepsy">
+        <a href="seizure.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Seizure_Epilepsy-removebg-preview.png" class="card-img-top" alt="Seizure">
+          <div class="card-body">
+            <h5 class="card-title">⚡ Seizure (Epilepsy)</h5>
+            <p class="card-text">Lay on side, remove harmful objects, do not hold down, time seizure.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Allergic Reaction -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="allergic reaction">
+        <a href="allergy.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Allergic_Reaction_Mild-removebg-preview.png" class="card-img-top" alt="Allergic Reaction">
+          <div class="card-body">
+            <h5 class="card-title">🤧 Allergic Reaction (Mild)</h5>
+            <p class="card-text">Calm person, remove allergen, watch for worsening signs.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Asthma Attack -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="asthma attack">
+        <a href="asthma.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Asthma-removebg-preview.png" class="card-img-top" alt="Asthma Attack">
+          <div class="card-body">
+            <h5 class="card-title">🌬️ Asthma Attack</h5>
+            <p class="card-text">Keep calm, sit upright, encourage slow breathing, avoid triggers.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Splinters / Small Foreign Objects -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="splinters foreign objects">
+        <a href="splinters.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Splinters-removebg-preview (1).png" class="card-img-top" alt="Splinter">
+          <div class="card-body">
+            <h5 class="card-title">🩹 Splinters & Stuck Bits</h5>
+            <p class="card-text">Wash the area, gently remove the splinter with clean tweezers, clean the spot again, and cover it with a bandage.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Heat Exhaustion -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="heat exhaustion sunstroke">
+        <a href="heat.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Heat_Exhaustion-removebg-preview.png" class="card-img-top" alt="Heat Exhaustion">
+          <div class="card-body">
+            <h5 class="card-title">☀️ Heat Exhaustion / Sunstroke</h5>
+            <p class="card-text">Move to cooler area, give sips of water, apply wet cloth, loosen clothes.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Hyperventilation / Panic Attack -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="hyperventilation panic attack">
+        <a href="panic.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Hyper_Ventilation-removebg-preview.png" class="card-img-top" alt="Panic Attack">
+          <div class="card-body">
+            <h5 class="card-title">😰 Hyperventilation / Panic Attack</h5>
+            <p class="card-text">Talk calmly, guide breathing slowly, count together, reassure.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Dehydration -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="dehydration">
+        <a href="dehydration.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Dehydration-removebg-preview.png" class="card-img-top" alt="Dehydration">
+          <div class="card-body">
+            <h5 class="card-title">💧 Dehydration</h5>
+            <p class="card-text">Give small sips of water or ORS, rest in cool environment.</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Insect Bites -->
+      <div class="col-md-6 col-lg-4 card-link" data-title="insect bites bee stings">
+        <a href="insect.html" class="card h-100 text-decoration-none text-dark">
+          <img src="Files/Instruction/Insect_Bite-removebg-preview.png" class="card-img-top" alt="Insect Bite">
+          <div class="card-body">
+            <h5 class="card-title">🐝 Insect Bites / Bee Stings</h5>
+            <p class="card-text">Remove stinger, wash, apply cold compress, observe for reactions.</p>
+          </div>
+        </a>
+      </div>
+
     </div>
   </div>
 
@@ -280,7 +431,7 @@
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
-      }, 1200);
+      }, 600);
     });
     // Live Clock
     setInterval(() => {
@@ -399,6 +550,45 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
+    gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray(".card").forEach(card => {
+  gsap.from(card, {
+    opacity: 0,
+    y: 30,
+    duration: 0.6,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: card,
+      start: "top 90%",
+      toggleActions: "play none none none"
+    }
+  });
+
+  // Hover subtle scale
+  card.addEventListener("mouseenter", () => {
+    gsap.to(card, { scale: 1.03, duration: 0.3 });
+  });
+  card.addEventListener("mouseleave", () => {
+    gsap.to(card, { scale: 1, duration: 0.3 });
+  });
+});
+
+// Live Search Filter
+const searchInput = document.getElementById('searchInput');
+searchInput.addEventListener('input', function() {
+  const filter = this.value.toLowerCase();
+  const cards = document.querySelectorAll('.card-link');
+
+  cards.forEach(card => {
+    const title = card.getAttribute('data-title').toLowerCase();
+    if(title.includes(filter)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+});
   </script>
 </body>
 </html>

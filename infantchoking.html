@@ -198,26 +198,92 @@
   </div>
 
   <!-- Hero -->
-  <div class="container hero-section">
-    <div class="row align-items-center g-4">
-      <div class="col-md-4 hero-image">
-        <img src="Files/firstaid pic.jpg" alt="Medical Help">
-      </div>
-      <div class="col-md-8">
-        <h2 class="fw-bold mb-3">Immediate Help at Your Fingertips</h2>
-        <p>In a medical emergency, every second counts. Our app provides instant guidance and support to help you stay calm and take the right actions.</p>
-   <div class="mt-4 d-flex justify-content-center">
-  <button class="btn btn-emergency me-2" onclick="window.location.href='instructions.html'">
-    Start Emergency Guide
-  </button>
-  <button onclick="window.location.href='chatbot.html'" class="btn btn-ask-ai">
-    Ask AI
-  </button>
-</div>
+    <div class="container py-5">
+      <div class="row g-4">
+        <div class="col-12 text-center">
+          <h2 class="main-heading">🧾 First Aid for Choking (Airway Blockage) in Babies Under 1 Year</h2>
+          <p>If a baby is choking and can’t cry, cough, or breathe, act fast. Support the baby face down on your arm and give up to 5 firm back blows between the shoulders. If the blockage remains, turn the baby face up and give up to 5 chest thrusts with two fingers below the nipple line. Keep alternating back blows and chest thrusts until the object comes out or help arrives. If the baby becomes unresponsive, call emergency services and begin infant CPR.</p>
+        </div>
 
+        <div class="col-md-6">
+          <h3 class="section-heading">⚠️ Signs That a Baby is Choking</h3>
+          <ul>
+            <li>Looks panicked or in distress</li>
+            <li>Coughing or gagging</li>
+            <li>Breathing sounds strange or noisy</li>
+            <li>Trouble breathing</li>
+            <li>Can’t cry or make sounds</li>
+            <li>Face turns pale</li>
+            <li>Lips or face change color (blue or purple)</li>
+            <li>Becomes unresponsive</li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Baby_Choking_1-removebg-preview.png" alt="Signs of Choking" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Ambulance-removebg-preview.png" alt="Ambulance" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+          <h3 class="section-heading">🚑 What to Do if a Baby is Choking</h3>
+          <ul>
+            <li>Call for emergency help right away</li>
+            <li>Follow the steps to clear the blockage</li>
+            <li>Stay on the line — the operator will guide you through the process</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="section-heading">👶 Giving Back Blows to a Choking Baby</h3>
+          <ul>
+            <li>Lay the baby face down on your forearm or thigh</li>
+            <li>Use the heel of your hand to give a firm blow between the shoulder blades</li>
+            <li>Give up to 5 back blows</li>
+            <li>After each blow, check the baby’s mouth to see if the blockage has cleared</li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Baby_Choking_2-removebg-preview.png" alt="Back Blows" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Baby_Choking_3-removebg-preview.png" alt="Chest Thrusts" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+          <h3 class="section-heading">🚼 Giving Chest Thrusts to a Choking Baby</h3>
+          <ul>
+            <li>If the blockage is still there, lay the baby on their back on a firm surface</li>
+            <li>Place 2 fingers in the middle of the chest, between the nipples</li>
+            <li>Give up to 5 quick, firm chest thrusts</li>
+            <li>After each thrust, check the baby’s mouth to see if the blockage has cleared</li>
+          </ul>
+        </div>
+
+        <div class="col-md-6">
+          <h3 class="section-heading">🔄 Keep Helping Until the Baby Can Breathe</h3>
+          <ul>
+            <li>Keep giving 5 back blows and then 5 chest thrusts until the blockage clears</li>
+            <li>When the blockage is gone, place the baby on their side in the recovery position with their head tilted down</li>
+            <li>Stay with the baby until emergency help arrives</li>
+          </ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Baby_Choking_4-removebg-preview.png" alt="Keep Helping" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6 text-center">
+          <img src="Files/Infant Choking/Baby_Choking_5-removebg-preview.png" alt="Baby CPR" class="img-fluid rounded shadow">
+        </div>
+        <div class="col-md-6">
+          <h3 class="section-heading">🆘 If the Baby Is Still Choking</h3>
+          <ul>
+            <li>Keep giving 5 back blows and 5 chest thrusts until emergency help arrives</li>
+            <li>If the baby becomes unconscious, start baby CPR immediately</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
@@ -280,7 +346,7 @@
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
-      }, 1200);
+      }, 600);
     });
     // Live Clock
     setInterval(() => {
@@ -399,6 +465,96 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
+    // <!-- GSAP Animations -->
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
+    "(min-width: 769px)": function () {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+      // Animate images differently
+      gsap.utils.toArray("img").forEach((img, i) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+    },
+    // ✅ Mobile (max-width: 768px)
+    "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
+        });
+      });
+    }
+  });
+
+
   </script>
 </body>
 </html>
