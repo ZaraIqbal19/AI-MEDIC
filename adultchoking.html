@@ -279,7 +279,14 @@
         </div>
       </div>
     </div>
-
+<!-- Download Button Section -->
+<div class="text-center my-5">
+  <a href="pdfs/adult chocking.pdf" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -548,7 +555,26 @@
       });
     }
   });
+// <!-- GSAP Animation for Button -->
+  gsap.from(".download-btn", {
+    scrollTrigger: {
+      trigger: ".download-btn",
+      start: "top 90%",
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
+  });
 
+  // Hover animation
+  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
+    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
+  });
+  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
+    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
+  });
 
   </script>
 </body>

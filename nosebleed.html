@@ -176,7 +176,14 @@
       </div>
     </div>
   </div>
-
+<!-- Download Button Section -->
+<div class="text-center my-5">
+  <a href="" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -227,11 +234,238 @@
   <!-- GSAP Animations (same as before) -->
    
   <script>
+    // Splash (kept as-is functionally)
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
       }, 600);
     });
+    // Live Clock
+    setInterval(() => {
+      let now = new Date();
+      document.getElementById("livetime").innerText = now.toLocaleTimeString();
+    }, 1000);
+
+    // ===== GSAP Animations (Desktop + Mobile) =====
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Respect reduced motion
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = "power2.out";
+
+    // Initial (on load) – header + navbar
+    if(!reduceMotion){
+      gsap.from(".navbar-brand", {y:-12, opacity:0, duration:.6, delay:.1, ease});
+      gsap.from(".navbar-nav .nav-link", {y:-10, opacity:0, duration:.5, stagger:.08, delay:.15, ease});
+      gsap.from("#livetime", {y:-8, opacity:0, duration:.6, stagger:.15, delay:.2, ease});
+    }
+
+    // MatchMedia for desktop vs mobile subtle differences
+    const mm = gsap.matchMedia();
+
+    // Desktop (>=992px)
+    mm.add("(min-width: 992px)", () => {
+      if(reduceMotion) return;
+
+      // Hero image + text
+      gsap.from(".hero-image img", {
+        x:-60, opacity:0, duration:1, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 80%" }
+      });
+      gsap.from(".hero-section h2", {
+        y:30, opacity:0, duration:.9, delay:.1, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 82%" }
+      });
+      gsap.from(".hero-section p", {
+        y:24, opacity:0, duration:.9, delay:.2, ease,
+        scrollTrigger:{ trigger:".hero-section p", start:"top 85%" }
+      });
+      gsap.from(".hero-section .btn", {
+        scale:.94, opacity:0, duration:.7, stagger:.15, delay:.25, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 88%" }
+      });
+
+      // Footer headings + text
+      gsap.from("footer h5, footer h6", {
+        y:28, opacity:0, duration:.9, stagger:.15, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 92%" }
+      });
+      gsap.from("footer .footer-link, footer p", {
+        y:18, opacity:0, duration:.8, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 95%" }
+      });
+
+      // Social icons one-by-one
+      gsap.from("footer .social-icon", {
+        y:12, opacity:0, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Mobile (<992px) – gentler
+    mm.add("(max-width: 991.98px)", () => {
+      if(reduceMotion) return;
+
+      gsap.from(".hero-image img", {
+        opacity:0, scale:.98, duration:.9, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 85%" }
+      });
+      gsap.from(".hero-section h2, .hero-section p", {
+        opacity:0, y:16, duration:.8, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 88%" }
+      });
+      gsap.from(".hero-section .btn", {
+        opacity:0, y:12, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 92%" }
+      });
+      gsap.from("footer h5, footer h6, footer .footer-link, footer p", {
+        opacity:0, y:14, duration:.7, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 96%" }
+      });
+      gsap.from("footer .social-icon", {
+        opacity:0, y:10, duration:.55, stagger:.1, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Hover micro-interactions for social icons (extra subtle)
+    document.querySelectorAll(".social-icon").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:-2, duration:.2, ease:"power1.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:0, duration:.2, ease:"power1.out" });
+      });
+    });
+
+    // Scroll-to-top button show/hide via ScrollTrigger
+    if(!reduceMotion){
+      ScrollTrigger.create({
+        start: 300,
+        onEnter: ()=> showToTop(true),
+        onLeaveBack: ()=> showToTop(false)
+      });
+    }
+    function showToTop(show){
+      const btn = document.getElementById("toTop");
+      if(show){
+        btn.style.visibility = "visible";
+        gsap.to(btn, {opacity:1, y:0, duration:.25, ease:"power1.out"});
+      }else{
+        gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
+      }
+    }
+    // <!-- GSAP Animations -->
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
+    "(min-width: 769px)": function () {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+      // Animate images differently
+      gsap.utils.toArray("img").forEach((img, i) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+    },
+    // ✅ Mobile (max-width: 768px)
+    "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
+        });
+      });
+    }
+  });
+// <!-- GSAP Animation for Button -->
+  gsap.from(".download-btn", {
+    scrollTrigger: {
+      trigger: ".download-btn",
+      start: "top 90%",
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
+  });
+
+  // Hover animation
+  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
+    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
+  });
+  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
+    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
+  });
+
   </script>
 </body>
 </html>
