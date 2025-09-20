@@ -14,6 +14,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
+    /* ======= COLORS & BASE ======= */
     :root{
       --brand-red:#e60000;
       --brand-red-dark:#c40000;
@@ -38,127 +39,48 @@
     .navbar-brand .text-danger,
     .navbar-brand,
     .nav-link:hover{ color:var(--brand-red) !important; }
-  .header .container{ max-width:1100px; }
+    .header .container{ max-width:1100px; }
     .hero-section{ padding:60px 15px; }
     .hero-image img{
       width:100%;
       border-radius:20px;
       display:block;
     }
-    .btn-emergency{
-      background-color:var(--brand-red);
-      color:#fff;
-      border:none;
-      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-    }
-    .btn-emergency:hover{
-      background-color:var(--brand-red-dark);
-      transform: translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,0,0,.08);
-    }
-    .btn-ask-ai{
-      background-color:#f0f0f0;
-      color:#333;
-      border:none;
-      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
-    }
-    .btn-ask-ai:hover{
-      background-color:#eaeaea;
-      transform: translateY(-1px);
-      box-shadow:0 8px 18px rgba(0,0,0,.08);
-    }
-    .splash{
-      position:fixed; inset:0;
-      height:100vh; width:100vw;
-      background-color:#ffffff;
-      display:flex; justify-content:center; align-items:center;
-      z-index:9999;
-    }
-    .app-logo{
-      width:90px; height:90px; opacity:0;
-      animation:fadeZoom 1.2s ease-in-out forwards;
-    }
-    @keyframes fadeZoom{
-      0%{ transform:scale(.6); opacity:0; }
-      100%{ transform:scale(1); opacity:1; }
-    }
+    .section-heading { color:var(--brand-red); font-weight:600; }
+    /* Buttons */
+    .btn-emergency{ background-color:var(--brand-red); color:#fff; border:none; }
+    .btn-emergency:hover{ background-color:var(--brand-red-dark); }
+    .btn-ask-ai{ background:#f0f0f0; color:#333; border:none; }
+    .btn-ask-ai:hover{ background:#eaeaea; }
+    /* Splash */
+    .splash{ position:fixed; inset:0; height:100vh; width:100vw; background-color:#ffffff;
+      display:flex; justify-content:center; align-items:center; z-index:9999;}
+    .app-logo{ width:90px; height:90px; opacity:0; animation:fadeZoom 1.2s ease-in-out forwards; }
+    @keyframes fadeZoom{ 0%{ transform:scale(.6); opacity:0; } 100%{ transform:scale(1); opacity:1; } }
     .brand-title{ font-size:24px; font-weight:700; margin-top:15px; color:#d70000; }
     .tagline{ font-size:14px; color:#444; margin-top:5px; }
-    .dots span{
-      display:inline-block; width:6px; height:6px; margin:8px 2px;
-      background-color:#d70000; border-radius:50%;
-      animation:blink 1.2s infinite ease-in-out both;
-    }
+    .dots span{ display:inline-block; width:6px; height:6px; margin:8px 2px; background-color:#d70000;
+      border-radius:50%; animation:blink 1.2s infinite ease-in-out both; }
     .dots span:nth-child(2){ animation-delay:.2s; }
     .dots span:nth-child(3){ animation-delay:.4s; }
-    @keyframes blink{
-      0%,80%,100%{ opacity:0; }
-      40%{ opacity:1; }
-    }
-
-    footer{
-      background-color: #fff;
-      color: var(--ink);
-      padding:50px 0 20px;
-      margin-top:50px;
-      box-shadow:0 -4px 16px rgba(0,0,0,.05);
-    }
-    footer h5, footer h6{
-      font-size:1.15rem;     
-      font-weight:600;       
-      margin-bottom:20px;
-      text-transform:uppercase;
-      color:var(--brand-red);
-      letter-spacing:.3px;
-    }
+    @keyframes blink{ 0%,80%,100%{ opacity:0; } 40%{ opacity:1; } }
+    /* Footer */
+    footer{ background-color: #fff; color: var(--ink); padding:50px 0 20px; margin-top:50px; }
+    footer h5, footer h6{ font-size:1.15rem; font-weight:600; margin-bottom:20px; text-transform:uppercase; color:var(--brand-red); }
     .footertext{ color:var(--brand-red) !important; }
-
-    footer a.footer-link{
-      color:var(--ink-2);
-      text-decoration:none;
-      display:block;
-      margin-bottom:8px;
-      position:relative;
-      transition:color .25s ease;
-    }
-    /* subtle underline grow on hover */
-    footer a.footer-link::after{
-      content:'';
-      position:absolute;
-      left:0; bottom:-2px;
-      width:0; height:2px;
-      background:var(--brand-red);
-      transition:width .25s ease;
-    }
-    footer a.footer-link:hover{
-      color:var(--brand-red);
-    }
-    footer a.footer-link:hover::after{ width:100%; }
-
-    /* Social icons row + hover */
-    .social-icon{
-      display:inline-block;
-      margin-left:10px;
-      font-size:1.1rem;
-      color:var(--ink-2);
-      transition: transform .2s ease, color .25s ease, text-shadow .2s ease;
-    }
-    .social-icon:first-child{ margin-left:0; }
-    .social-icon:hover{
-      color:var(--brand-red);
-      transform: translateY(-1px) scale(1.06);
-      text-shadow:0 0 10px rgba(230,0,0,.15);
-    }
-    /* Fine-tuned alignment & spacing */
+    footer a.footer-link{ color:var(--ink-2); text-decoration:none; display:block; margin-bottom:8px; position:relative; }
+    footer a.footer-link:hover{ color:var(--brand-red); }
+    /* Social */
+    .social-icon{ display:inline-block; margin-left:10px; font-size:1.1rem; color:var(--ink-2); }
+    .social-icon:hover{ color:var(--brand-red); }
     @media (max-width: 991.98px){
       .hero-section .row > [class*="col-"]{ text-align:center; }
-      .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
     }
   </style>
 </head>
 <body>
-  <!-- Splash Screen -->
+  <!-- Splash -->
   <div class="splash" id="splash">
     <div class="logo-wrap text-center">
       <img src="Files/logo.png" alt="AI Medic Logo" class="app-logo"/>
@@ -189,76 +111,82 @@
     </nav>
   </div>
 
-  <!-- Hero -->
- <div class="container py-5">
-    <div class="row g-4">   
-        <div class="col-lg-5 col-md-12">
-            <div class="p-4 border rounded shadow-sm h-100 d-flex flex-column">
-                <h5>Contact Information</h5>
-                <div class="contact-info mb-3">
-                    <p><i class="fa-solid fa-envelope me-2"></i>aimedic807@gmail.com</p>
-                    <p><i class="fa-solid fa-phone me-2"></i>+92 300 1234567</p>
-                    <p><i class="fa-solid fa-location-dot me-2"></i>Scheme 33, Karachi, Pakistan</p>
-                    <p><i class="fa-regular fa-clock me-2"></i>Mon - Fri: 9:00 AM - 6:00 PM</p>
-                </div>
+  <!-- Hero (Nosebleed) -->
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 text-center">
+        <h2 class="main-heading">🩸 First Aid for Nosebleed (Epistaxis)</h2>
+        <p>A nosebleed is usually not serious, but it can be scary. Stay calm and help the person sit upright. Lean them slightly forward and pinch the soft part of the nose for 10–15 minutes. Avoid tilting the head back, as this can cause blood to flow into the throat. If bleeding does not stop, seek medical help immediately.</p>
+      </div>
 
-                
-                <div class="mb-3">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.291030099906!2d67.06432831500147!3d24.900571984050026!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33f9a9d4c37df%3A0x845f0a61d4f1c5f4!2sScheme%2033%2C%20Karachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1699999999999!5m2!1sen!2s"
-                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
-                </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">⚠️ Common Causes of Nosebleeds</h3>
+        <ul>
+          <li>Dry air or nasal irritation</li>
+          <li>Frequent nose-picking or blowing</li>
+          <li>Injury to the nose</li>
+          <li>Allergies or sinus infections</li>
+          <li>High blood pressure</li>
+          <li>Use of blood-thinning medications</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/1.PNG" alt="Nosebleed Causes" class="w-100 img-fluid rounded shadow">
+      </div>
 
-                
-                <div class="social-links text-center">
-                    <a href="https://www.facebook.com/"><i class="fa-brands fa-facebook fa-lg me-2"></i></a>
-                    <a href="https://www.whatsapp.com/"><i class="fa-brands fa-whatsapp fa-lg me-2"></i></a>
-                    <a href="http://linkedin.com/"><i class="fa-brands fa-linkedin fa-lg me-2"></i></a>
-                    <a href="https://www.instagram.com/"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                </div>
-            </div>
-        </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/2.PNG" alt="First Aid Nosebleed" class="w-100 img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🚑 What to Do During a Nosebleed</h3>
+        <ul>
+          <li>Stay calm and reassure the person</li>
+          <li>Sit upright and lean slightly forward</li>
+          <li>Pinch the soft part of the nose firmly for 10–15 minutes</li>
+          <li>Breathe through the mouth while applying pressure</li>
+          <li>Apply a cold compress to the nose and cheeks</li>
+        </ul>
+      </div>
 
-        
-        <div class="col-lg-7 col-md-12">
-            <div class="p-4 border rounded shadow-sm h-100">
-                <h2>We're here to help</h2>
-                <p>If you have any questions, feedback, or need support, please reach out. We're committed to providing you with the best possible assistance.</p>
+      <div class="col-md-6">
+        <h3 class="section-heading">❌ What NOT to Do</h3>
+        <ul>
+          <li>Do not tilt the head backward</li>
+          <li>Do not stuff tissues or cotton deep inside the nose</li>
+          <li>Do not blow the nose immediately after bleeding stops</li>
+          <li>Avoid bending down or lifting heavy objects for a few hours</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/3-removebg-preview.png" alt="Do Not Do During Nosebleed" class="img-fluid rounded shadow">
+      </div>
 
-                <form id="contactForm">
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Your Name" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="email" class="form-control" placeholder="Your Email" required>
-                    </div>
-                    <div class="mb-3">
-                        <input type="text" class="form-control" placeholder="Subject" required>
-                    </div>
-                    <div class="mb-3">
-                        <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100">Send Message</button>
-                </form>
-            </div>
-        </div>
-
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/4-removebg-preview.png" alt="Seek Help" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
+        <ul>
+          <li>If the bleeding lasts longer than 20 minutes</li>
+          <li>If nosebleeds occur frequently without cause</li>
+          <li>If bleeding follows an injury or accident</li>
+          <li>If the person feels faint, weak, or has trouble breathing</li>
+          <li>If the person is on blood-thinning medication</li>
+        </ul>
+      </div>
     </div>
-</div>
+  </div>
 
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
       <div class="row text-md-left">
-        <!-- LOGO & DESCRIPTION -->
         <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
           <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
           <p>
-            <a class="footer-link d-inline" href="index.html">AI Medic</a> is a smart medical assistant designed to provide instant, reliable, and easy-to-follow health guidance. Our mission is to make emergency help and first-aid knowledge accessible to everyone, anytime and anywhere.
+            <a class="footer-link d-inline" href="index.html">AI Medic</a> provides first-aid and emergency guidance for everyone. Stay informed, act quickly, and keep yourself and others safe.
           </p>
         </div>
-        <!-- WEBSITE LINKS -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
           <ul class="list-unstyled">
@@ -268,56 +196,36 @@
             <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
           </ul>
         </div>
-        <!-- CONTACT INFO -->
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
           <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
-          <p class="text-dark-50"><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
-          <p class="text-dark-50"><i class="fas fa-envelope me-2 mb-2"></i> support@aimedic.pk</p>
-          <p class="text-dark-50"><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
+          <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
+          <p><i class="fas fa-envelope me-2"></i> aimedic807@gmail.com</p>
+          <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
         </div>
-
-        <a href="Code Crafters.html"
-           class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
+        <a href="Code Crafters.html" class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
           <span class="border-top border-bottom border-info py-2 d-inline-block">code crafters</span>
         </a>
-
         <hr class="my-4 text-dark-50">
-
         <div class="row align-items-center">
           <div class="col-md-6 col-lg-8">
-            <p class="text-dark-50 mb-0">
-              © 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.
-            </p>
+            <p class="text-dark-50 mb-0">© 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.</p>
           </div>
           <div class="col-md-6 col-lg-4 text-md-end">
-            <!-- Social icons: will animate one-by-one -->
-            <a href="https://www.facebook.com/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.whatsapp.com/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.whatsapp.com/" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/" class="social-icon"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Splash (kept as-is functionally)
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.getElementById("splash").style.display = "none";
-      }, 600);
-    });
-    // Live Clock
-    setInterval(() => {
-      let now = new Date();
-      document.getElementById("livetime").innerText = now.toLocaleTimeString();
-    }, 1000);
-
-    // ===== GSAP Animations (Desktop + Mobile) =====
-    gsap.registerPlugin(ScrollTrigger);
+  <!-- GSAP Animations (same as before) -->
+   gsap.registerPlugin(ScrollTrigger);
 
     // Respect reduced motion
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -427,6 +335,100 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
+    // <!-- GSAP Animations -->
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
+    "(min-width: 769px)": function () {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+      // Animate images differently
+      gsap.utils.toArray("img").forEach((img, i) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+    },
+    // ✅ Mobile (max-width: 768px)
+    "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
+        });
+      });
+    }
+  });
+  <script>
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+      }, 600);
+    });
   </script>
 </body>
 </html>
