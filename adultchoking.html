@@ -156,6 +156,31 @@
       .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
     }
+        .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
+    }
   </style>
 </head>
 <body>
@@ -189,7 +214,9 @@
       </div>
     </nav>
   </div>
-
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
   <!-- Hero -->
     <div class="container py-5">
       <div class="row g-4">
@@ -197,7 +224,7 @@
           <h2 class="main-heading">🧾 Adult Choking Emergency: First Aid for Airway Obstruction</h2>
           <p>If an adult is choking and cannot speak, cough, or breathe, act immediately. Stand behind the person and give up to 5 firm back blows between the shoulder blades using the heel of your hand. If the blockage persists, perform up to 5 abdominal thrusts (Heimlich maneuver) by placing a fist above the navel and pulling inward and upward. Alternate between 5 back blows and 5 abdominal thrusts until the object is expelled or emergency help arrives. If the person becomes unresponsive, call emergency services and begin CPR.</p>
         </div>
-
+<hr>
         <div class="col-md-6">
         <h3 class="section-heading">⚠️ Recognizing Choking in Adults</h3>
 <ul>
@@ -279,8 +306,70 @@
         </div>
       </div>
     </div>
+    <!-- Prevention -->
+         <div class="container py-5">
+      <div class="row g-4">
+        <hr>
+        <div class="col-12 text-center">
+          <h2 class="main-heading">🧾 Adult Choking Prevention</h2>
+          <p>Choking in adults usually happens when food or an object blocks the airway. Prevention mainly involves safe eating habits, awareness, and emergency readiness.</p>
+        </div>
+<hr>
+        <div class="col-md-6">
+        <h3 class="section-heading">🧸 Toy Safety Tips for Children</h3>
+<ul>
+  <li>Always follow the recommended age guidelines on toy labels.</li>
+  <li>Avoid toys with small parts, breakable pieces, or brittle surfaces.</li>
+  <li>Steer clear of toys containing button batteries, as they can be dangerous if swallowed.</li>
+  <li>Regularly inspect toys for loose screws, buttons, or exposed stuffing to keep them safe.</li>
+</ul>
+
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="Files/Adult Choking/PreventChoking1.gif" alt="Prevent Choking" class="img-fluid rounded shadow">
+        </div>
+
+        <div class="col-md-6 text-center">
+          <img src="Files/Adult Choking/PreventChoking2.gif" alt="Prevent Choking" class="img-fluid rounded shadow">
+        </div>
+      <div class="col-md-6">
+  <h3 class="section-heading">🧒 Teaching Kids to Eat Safely</h3>
+  <ul>
+    <li>Encourage your child to sit down while eating instead of walking or playing.</li>
+    <li>Teach your child to chew food thoroughly and swallow carefully before taking the next bite.</li>
+  </ul>
+</div>
+
+        <div class="col-md-6">
+        <h3 class="section-heading">⚠️ Avoid Eating While Playing or Lying Down</h3>
+<ul>
+  <li>Do not let your child eat while lying down.</li>
+  <li>Avoid letting your child run, walk, or play during meals.</li>
+  <li>Teach your child that eating should be done while sitting still to prevent choking.</li>
+</ul>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="Files/Adult Choking/PreventChoking3.gif" alt="Back Blows" class="img-fluid rounded shadow">
+        </div>
+      </div>
+    </div>
+<!-- Medicine -->
+          <div class="container py-2">
+      <div class="row g-1">
+        <hr>
+        <div class="col-12 text-center">
+          <h2 class="main-heading">Treatment Medication</h2>
+          <p>Medicines or antibiotics that may be prescribed to aid recovery after choking</p>
+        </div>
+<hr>
+        <div class="col-12">
+        <h3 class="section-heading">🚫 No medicine can remove a blockage.</h3>
+        <p>If something is stuck in the airway, only physical methods (like the Heimlich maneuver or medical procedures) can clear it.</p>
+        </div>
+      </div>
+    </div>
 <!-- Download Button Section -->
-<div class="text-center my-5">
+<div class="text-center mb-5">
   <a href="pdfs/adult chocking.pdf" download
      class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
     <i class="fas fa-file-pdf"></i>
@@ -575,7 +664,19 @@
   document.querySelector(".download-btn").addEventListener("mouseleave", function () {
     gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
   });
+    // Splash close
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
+        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+      }, 800);
+    });
 
+    // Redirect on click
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      window.location.href = "instructions.html";
+    });
   </script>
 </body>
 </html>

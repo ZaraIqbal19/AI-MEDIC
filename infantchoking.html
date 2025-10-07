@@ -38,15 +38,17 @@
     .navbar-brand .text-danger,
     .navbar-brand,
     .nav-link:hover{ color:var(--brand-red) !important; }
-    .header .container{ max-width:1100px; }
-
-    /* Hero & Buttons */
+  .header .container{ max-width:1100px; }
     .hero-section{ padding:60px 15px; }
-    .hero-image img{ width:100%; border-radius:20px; display:block; }
-
+    .hero-image img{
+      width:100%;
+      border-radius:20px;
+      display:block;
+    }
     .btn-emergency{
       background-color:var(--brand-red);
-      color:#fff; border:none;
+      color:#fff;
+      border:none;
       transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
     }
     .btn-emergency:hover{
@@ -54,9 +56,11 @@
       transform: translateY(-1px);
       box-shadow:0 8px 18px rgba(0,0,0,.08);
     }
+  
     .btn-ask-ai{
       background-color:#f0f0f0;
-      color:#333; border:none;
+      color:#333;
+      border:none;
       transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
     }
     .btn-ask-ai:hover{
@@ -64,8 +68,6 @@
       transform: translateY(-1px);
       box-shadow:0 8px 18px rgba(0,0,0,.08);
     }
-
-    /* Splash Screen */
     .splash{
       position:fixed; inset:0;
       height:100vh; width:100vw;
@@ -90,9 +92,11 @@
     }
     .dots span:nth-child(2){ animation-delay:.2s; }
     .dots span:nth-child(3){ animation-delay:.4s; }
-    @keyframes blink{ 0%,80%,100%{ opacity:0; } 40%{ opacity:1; } }
+    @keyframes blink{
+      0%,80%,100%{ opacity:0; }
+      40%{ opacity:1; }
+    }
 
-    /* Footer */
     footer{
       background-color: #fff;
       color: var(--ink);
@@ -101,13 +105,15 @@
       box-shadow:0 -4px 16px rgba(0,0,0,.05);
     }
     footer h5, footer h6{
-      font-size:1.15rem; font-weight:600;
+      font-size:1.15rem;     
+      font-weight:600;       
       margin-bottom:20px;
       text-transform:uppercase;
       color:var(--brand-red);
       letter-spacing:.3px;
     }
     .footertext{ color:var(--brand-red) !important; }
+
     footer a.footer-link{
       color:var(--ink-2);
       text-decoration:none;
@@ -116,16 +122,26 @@
       position:relative;
       transition:color .25s ease;
     }
+    /* subtle underline grow on hover */
     footer a.footer-link::after{
-      content:''; position:absolute; left:0; bottom:-2px;
-      width:0; height:2px; background:var(--brand-red);
+      content:'';
+      position:absolute;
+      left:0; bottom:-2px;
+      width:0; height:2px;
+      background:var(--brand-red);
       transition:width .25s ease;
     }
-    footer a.footer-link:hover{ color:var(--brand-red); }
+    footer a.footer-link:hover{
+      color:var(--brand-red);
+    }
     footer a.footer-link:hover::after{ width:100%; }
 
+    /* Social icons row + hover */
     .social-icon{
-      display:inline-block; margin-left:10px; font-size:1.1rem; color:var(--ink-2);
+      display:inline-block;
+      margin-left:10px;
+      font-size:1.1rem;
+      color:var(--ink-2);
       transition: transform .2s ease, color .25s ease, text-shadow .2s ease;
     }
     .social-icon:first-child{ margin-left:0; }
@@ -134,50 +150,40 @@
       transform: translateY(-1px) scale(1.06);
       text-shadow:0 0 10px rgba(230,0,0,.15);
     }
-
-    /* Responsive Adjustments */
+    /* Fine-tuned alignment & spacing */
     @media (max-width: 991.98px){
       .hero-section .row > [class*="col-"]{ text-align:center; }
       .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
     }
-
-/* 🟥 Close Button */
-.close-btn {
-  position: fixed;
-  top: 25px;
-  right: 25px;
-  background-color: var(--brand-red);
-  color: #fff;
-  border: none;
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  z-index: 10001; /* 🟢 now above splash */
-  transition: all 0.3s ease;
-}
-
-.close-btn:hover {
-  transform: scale(1.15);
-  background-color: var(--brand-red-dark);
-  box-shadow: 0 0 15px rgba(230, 0, 0, 0.4);
-}
-
+        .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
+    }
   </style>
 </head>
 <body>
-
-  <!-- 🟥 Close Button -->
-  <button class="close-btn" onclick="window.location.href='instructions.html'">
-    <i class="fas fa-times"></i>
-  </button>
-
   <!-- Splash Screen -->
   <div class="splash" id="splash">
     <div class="logo-wrap text-center">
@@ -208,7 +214,9 @@
       </div>
     </nav>
   </div>
-
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
   <!-- Hero -->
     <div class="container py-5">
       <div class="row g-4">
@@ -216,7 +224,7 @@
           <h2 class="main-heading">🧾 First Aid for Choking (Airway Blockage) in Babies Under 1 Year</h2>
           <p>If a baby is choking and can’t cry, cough, or breathe, act fast. Support the baby face down on your arm and give up to 5 firm back blows between the shoulders. If the blockage remains, turn the baby face up and give up to 5 chest thrusts with two fingers below the nipple line. Keep alternating back blows and chest thrusts until the object comes out or help arrives. If the baby becomes unresponsive, call emergency services and begin infant CPR.</p>
         </div>
-
+<hr>
         <div class="col-md-6">
           <h3 class="section-heading">⚠️ Signs That a Baby is Choking</h3>
           <ul>
@@ -296,15 +304,77 @@
         </div>
       </div>
     </div>
-    <!-- Download Button Section -->
-<div class="text-center my-5">
-  <a href="pdfs/infant choking under 1 year.pdf" download
+    <!-- Prevention -->
+         <div class="container py-5">
+      <div class="row g-4">
+        <hr>
+        <div class="col-12 text-center">
+          <h2 class="main-heading">🧾 Infant Choking Prevention</h2>
+          <p>Choking in infants often occurs when small objects, toys, or food pieces block their airway. Prevention focuses on keeping unsafe items out of reach, offering age-appropriate foods, and staying prepared for emergencies..</p>
+        </div>
+<hr>
+<div class="col-md-6">
+  <h3 class="section-heading">🧸 Safe Toy Practices for Infants</h3>
+  <ul>
+    <li>Choose toys that are large, soft, and designed specifically for infants under 1 year old.</li>
+    <li>Avoid toys with detachable small parts, buttons, or beads that could be swallowed.</li>
+    <li>Keep objects with batteries, magnets, or sharp edges completely out of your baby’s reach.</li>
+    <li>Check toys regularly for loose pieces, cracks, or damage to ensure they remain safe to play with.</li>
+  </ul>
+</div>
+<div class="col-md-6 text-center">
+  <img src="Files/Infant Choking/PreventChoking1.gif" alt="Prevent Infant Choking" class="img-fluid rounded shadow">
+</div>
+
+<div class="col-md-6 text-center">
+  <img src="Files/Infant Choking/PreventChoking2.gif" alt="Feeding Safety" class="img-fluid rounded shadow">
+</div>
+<div class="col-md-6">
+  <h3 class="section-heading">🍼 Feeding Safety for Infants</h3>
+  <ul>
+    <li>Always hold your baby upright while feeding—never feed while lying flat.</li>
+    <li>Make sure the nipple flow on bottles is appropriate for your baby’s age to prevent gagging.</li>
+    <li>Keep small food items like nuts, grapes, and popcorn away until your baby can chew properly.</li>
+  </ul>
+</div>
+
+<div class="col-md-6">
+  <h3 class="section-heading">⚠️ Avoid Feeding During Play or Sleep</h3>
+  <ul>
+    <li>Do not feed your baby while they are crying, laughing, or playing.</li>
+    <li>Never leave a bottle propped in your baby’s mouth unattended.</li>
+    <li>Feeding should always be done calmly and in an upright position to reduce choking risks.</li>
+  </ul>
+</div>
+<div class="col-md-6 text-center">
+  <img src="Files/Infant Choking/PreventChoking3.gif" alt="Infant Feeding Safety" class="img-fluid rounded shadow">
+</div>
+
+      </div>
+    </div>
+<!-- Medicine -->
+          <div class="container py-2">
+      <div class="row g-1">
+        <hr>
+        <div class="col-12 text-center">
+          <h2 class="main-heading">Treatment Medication</h2>
+          <p>Medicines or antibiotics that may be prescribed to aid recovery after choking</p>
+        </div>
+<hr>
+  <div class="col-12">
+  <h3 class="section-heading">🚫 No medicine can clear a baby’s blocked airway.</h3>
+  <p>If your baby’s airway is blocked, only gentle back blows, chest thrusts, or medical help can remove the obstruction — medicines or syrups will not help.</p>
+</div>
+      </div>
+    </div>
+<!-- Download Button Section -->
+<div class="text-center mb-5">
+  <a href="pdfs/adult chocking.pdf" download
      class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
     <i class="fas fa-file-pdf"></i>
     DOWNLOAD PRINTABLE VERSION
   </a>
 </div>
-
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -361,115 +431,251 @@
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<script>
-  // Splash remains but doesn't affect close button
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      document.getElementById("splash").style.display = "none";
-    }, 600);
-  });
+  <script>
+    // Splash (kept as-is functionally)
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+      }, 600);
+    });
+    // Live Clock
+    setInterval(() => {
+      let now = new Date();
+      document.getElementById("livetime").innerText = now.toLocaleTimeString();
+    }, 1000);
 
-  // ===== GSAP Animations (Desktop + Mobile) =====
+    // ===== GSAP Animations (Desktop + Mobile) =====
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Respect reduced motion
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = "power2.out";
+
+    // Initial (on load) – header + navbar
+    if(!reduceMotion){
+      gsap.from(".navbar-brand", {y:-12, opacity:0, duration:.6, delay:.1, ease});
+      gsap.from(".navbar-nav .nav-link", {y:-10, opacity:0, duration:.5, stagger:.08, delay:.15, ease});
+      gsap.from("#livetime", {y:-8, opacity:0, duration:.6, stagger:.15, delay:.2, ease});
+    }
+
+    // MatchMedia for desktop vs mobile subtle differences
+    const mm = gsap.matchMedia();
+
+    // Desktop (>=992px)
+    mm.add("(min-width: 992px)", () => {
+      if(reduceMotion) return;
+
+      // Hero image + text
+      gsap.from(".hero-image img", {
+        x:-60, opacity:0, duration:1, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 80%" }
+      });
+      gsap.from(".hero-section h2", {
+        y:30, opacity:0, duration:.9, delay:.1, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 82%" }
+      });
+      gsap.from(".hero-section p", {
+        y:24, opacity:0, duration:.9, delay:.2, ease,
+        scrollTrigger:{ trigger:".hero-section p", start:"top 85%" }
+      });
+      gsap.from(".hero-section .btn", {
+        scale:.94, opacity:0, duration:.7, stagger:.15, delay:.25, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 88%" }
+      });
+
+      // Footer headings + text
+      gsap.from("footer h5, footer h6", {
+        y:28, opacity:0, duration:.9, stagger:.15, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 92%" }
+      });
+      gsap.from("footer .footer-link, footer p", {
+        y:18, opacity:0, duration:.8, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 95%" }
+      });
+
+      // Social icons one-by-one
+      gsap.from("footer .social-icon", {
+        y:12, opacity:0, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Mobile (<992px) – gentler
+    mm.add("(max-width: 991.98px)", () => {
+      if(reduceMotion) return;
+
+      gsap.from(".hero-image img", {
+        opacity:0, scale:.98, duration:.9, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 85%" }
+      });
+      gsap.from(".hero-section h2, .hero-section p", {
+        opacity:0, y:16, duration:.8, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 88%" }
+      });
+      gsap.from(".hero-section .btn", {
+        opacity:0, y:12, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 92%" }
+      });
+      gsap.from("footer h5, footer h6, footer .footer-link, footer p", {
+        opacity:0, y:14, duration:.7, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 96%" }
+      });
+      gsap.from("footer .social-icon", {
+        opacity:0, y:10, duration:.55, stagger:.1, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Hover micro-interactions for social icons (extra subtle)
+    document.querySelectorAll(".social-icon").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:-2, duration:.2, ease:"power1.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:0, duration:.2, ease:"power1.out" });
+      });
+    });
+
+    // Scroll-to-top button show/hide via ScrollTrigger
+    if(!reduceMotion){
+      ScrollTrigger.create({
+        start: 300,
+        onEnter: ()=> showToTop(true),
+        onLeaveBack: ()=> showToTop(false)
+      });
+    }
+    function showToTop(show){
+      const btn = document.getElementById("toTop");
+      if(show){
+        btn.style.visibility = "visible";
+        gsap.to(btn, {opacity:1, y:0, duration:.25, ease:"power1.out"});
+      }else{
+        gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
+      }
+    }
+    // <!-- GSAP Animations -->
   gsap.registerPlugin(ScrollTrigger);
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const ease = "power2.out";
-  const mm = gsap.matchMedia();
-
-  // Navbar intro
-  if(!reduceMotion){
-    gsap.from(".navbar-brand", {y:-12, opacity:0, duration:.6, delay:.1, ease});
-    gsap.from(".navbar-nav .nav-link", {y:-10, opacity:0, duration:.5, stagger:.08, delay:.15, ease});
-  }
-
-  // Desktop animations
-  mm.add("(min-width: 992px)", () => {
-    if(reduceMotion) return;
-
-    gsap.from(".hero-section h2", {
-      y:30, opacity:0, duration:.9, ease,
-      scrollTrigger:{ trigger:".hero-section h2", start:"top 82%" }
-    });
-    gsap.from(".hero-section p", {
-      y:24, opacity:0, duration:.9, delay:.1, ease,
-      scrollTrigger:{ trigger:".hero-section p", start:"top 85%" }
-    });
-    gsap.from(".hero-section img", {
-      x:-60, opacity:0, duration:1, ease,
-      scrollTrigger:{ trigger:".hero-section img", start:"top 80%" }
-    });
-  });
-
-  // Mobile animations
-  mm.add("(max-width: 991.98px)", () => {
-    if(reduceMotion) return;
-
-    gsap.from(".hero-section h2, .hero-section p", {
-      opacity:0, y:20, duration:.8, stagger:.12, ease,
-      scrollTrigger:{ trigger:".hero-section h2", start:"top 88%" }
-    });
-    gsap.from(".hero-section img", {
-      opacity:0, scale:.95, duration:.9, ease,
-      scrollTrigger:{ trigger:".hero-section img", start:"top 85%" }
-    });
-  });
-
-  // Animate headings, images, and list items
   ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
     "(min-width: 769px)": function () {
-      gsap.utils.toArray(".section-heading").forEach(el => {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
         gsap.from(el, {
-          scrollTrigger:{ trigger:el, start:"top 80%" },
-          y:50, opacity:0, duration:.8, ease:"power2.out"
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
         });
       });
+      // Animate images differently
       gsap.utils.toArray("img").forEach((img, i) => {
         gsap.from(img, {
-          scrollTrigger:{ trigger:img, start:"top 85%" },
-          x: i % 2 === 0 ? -100 : 100,
-          opacity:0, duration:1, ease:"power3.out"
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
         });
       });
     },
+    // ✅ Mobile (max-width: 768px)
     "(max-width: 768px)": function () {
-      gsap.utils.toArray(".section-heading").forEach(el => {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
         gsap.from(el, {
-          scrollTrigger:{ trigger:el, start:"top 85%" },
-          y:30, opacity:0, duration:.6, ease:"power1.out"
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
         });
       });
-      gsap.utils.toArray("img").forEach(img => {
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
         gsap.from(img, {
-          scrollTrigger:{ trigger:img, start:"top 90%" },
-          scale:0.85, opacity:0, duration:.8, ease:"back.out(1.7)"
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
         });
       });
     }
   });
-
-  // Button entrance animation (PDF download)
+// <!-- GSAP Animation for Button -->
   gsap.from(".download-btn", {
-    scrollTrigger:{ trigger:".download-btn", start:"top 90%" },
-    y:50, opacity:0, scale:0.8, duration:1, ease:"back.out(1.7)"
+    scrollTrigger: {
+      trigger: ".download-btn",
+      start: "top 90%",
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
   });
+
+  // Hover animation
   document.querySelector(".download-btn").addEventListener("mouseenter", function () {
     gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
   });
   document.querySelector(".download-btn").addEventListener("mouseleave", function () {
     gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
   });
+    // Splash close
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
+        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+      }, 800);
+    });
 
-  // ✅ Close button fade-in (no hiding)
-// ✅ Close button fade-in AFTER splash disappears
-setTimeout(() => {
-  gsap.from(".close-btn", {
-    opacity: 0,
-    scale: 0.7,
-    duration: 0.8,
-    ease: "back.out(1.7)"
-  });
-}, 50); // run after splash hides (slightly after 600ms)
-
-</script>
-
+    // Redirect on click
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      window.location.href = "instructions.html";
+    });
+  </script>
 </body>
 </html>

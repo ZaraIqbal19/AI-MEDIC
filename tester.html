@@ -56,6 +56,7 @@
       transform: translateY(-1px);
       box-shadow:0 8px 18px rgba(0,0,0,.08);
     }
+  
     .btn-ask-ai{
       background-color:#f0f0f0;
       color:#333;
@@ -155,6 +156,31 @@
       .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
     }
+        .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
+    }
   </style>
 </head>
 <body>
@@ -188,180 +214,149 @@
       </div>
     </nav>
   </div>
-
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
   <!-- Hero -->
-  <div class="container my-5">
-    <!-- Page Title -->
-    <h2 class="text-center mb-4 fw-bold">Emergency Ready: Life-Saving Skills with Nothing but You!</h2>
-    <h5 class="text-center mb-4">Quick Fixes, No Gear Needed: Life-Saving Actions with Just Your Hands and Head</h5>
-    <p class="text-center mb-4">In everyday emergencies, the most powerful tools are already with you—your hands and your head. From stopping bleeding to clearing airways or calming someone in distress, quick, confident action can make all the difference. No gadgets, no panic—just smart, simple steps that save lives. Be ready, anytime, anywhere.</p>
-
-    <!-- Search Box -->
-    <div class="mb-5">
-      <input type="text" id="searchInput" class="form-control" placeholder="Search emergencies...">
-    </div>
-
-    <!-- Emergency Cards Grid -->
-    <div class="row g-4" id="emergencyCards">
-
-      <!-- Baby Choking -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="baby choking">
-        <a href="infantchoking.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Infant_Choking-removebg-preview.png" class="card-img-top" alt="Baby Choking">
-          <div class="card-body">
-            <h5 class="card-title">👶 Infant Choking (Under 1 Year Old)</h5>
-            <p class="card-text">👶 5 back blows ➕ 5 chest thrusts = Infant safe! ❌ No Heimlich!</p>
-          </div>
-        </a>
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 text-center">
+        <h2 class="main-heading">🩸 First Aid for Nosebleed (Epistaxis)</h2>
+        <p>A nosebleed is usually not serious, but it can be scary. Stay calm and help the person sit upright. Lean them slightly forward and pinch the soft part of the nose for 10–15 minutes. Avoid tilting the head back, as this can cause blood to flow into the throat. If bleeding does not stop, seek medical help immediately.</p>
+      </div>
+<hr>
+      <div class="col-md-6">
+        <h3 class="section-heading">⚠️ Common Causes of Nosebleeds</h3>
+        <ul>
+          <li>Dry air or nasal irritation</li>
+          <li>Frequent nose-picking or blowing</li>
+          <li>Injury to the nose</li>
+          <li>Allergies or sinus infections</li>
+          <li>High blood pressure</li>
+          <li>Use of blood-thinning medications</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/1.PNG" alt="Nosebleed Causes" class="w-100 img-fluid rounded shadow">
       </div>
 
-      <!-- Teen/Adult Choking -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="teen choking">
-        <a href="adultchoking.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Adult_Choking-removebg-preview.png" class="card-img-top" alt="Teen Choking">
-          <div class="card-body">
-            <h5 class="card-title">🧑‍🤝‍🧑 Choking Rescue for Teens & Adults</h5>
-            <p class="card-text">👋➕🤜 Give back blows and abdominal thrusts (Heimlich) until the airway is clear
-            </p>
-          </div>
-        </a>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/2.PNG" alt="First Aid Nosebleed" class="w-100 img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🚑 What to Do During a Nosebleed</h3>
+        <ul>
+          <li>Stay calm and reassure the person</li>
+          <li>Sit upright and lean slightly forward</li>
+          <li>Pinch the soft part of the nose firmly for 10–15 minutes</li>
+          <li>Breathe through the mouth while applying pressure</li>
+          <li>Apply a cold compress to the nose and cheeks</li>
+        </ul>
       </div>
 
-      <!-- Nosebleeds -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="nosebleeds">
-        <a href="nosebleeds.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Nose_Bleed-removebg-preview.png" class="card-img-top" alt="Nosebleeds">
-          <div class="card-body">
-            <h5 class="card-title">🤕 Nosebleeds</h5>
-            <p class="card-text">Tilt head forward, pinch nostrils, apply cold compress if available.</p>
-          </div>
-        </a>
+      <div class="col-md-6">
+        <h3 class="section-heading">❌ What NOT to Do</h3>
+        <ul>
+          <li>Do not tilt the head backward</li>
+          <li>Do not stuff tissues or cotton deep inside the nose</li>
+          <li>Do not blow the nose immediately after bleeding stops</li>
+          <li>Avoid bending down or lifting heavy objects for a few hours</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/3-removebg-preview.png" alt="Do Not Do During Nosebleed" class="img-fluid rounded shadow">
       </div>
 
-      <!-- Fainting/Dizziness -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="fainting dizziness">
-        <a href="fainting.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Fainting-removebg-preview.png" class="card-img-top" alt="Fainting">
-          <div class="card-body">
-            <h5 class="card-title">😵 Fainting / Dizziness</h5>
-            <p class="card-text">Lay flat, raise legs, loosen clothing, ensure fresh air.</p>
-          </div>
-        </a>
+      <div class="col-md-6 text-center">
+        <img src="Files/Nose Bleed/4-removebg-preview.png" alt="Seek Help" class="img-fluid rounded shadow">
       </div>
-
-      <!-- Minor Cuts & Scrapes -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="minor cuts scrapes">
-        <a href="cuts.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Cuts_Scrapes-removebg-preview.png" class="card-img-top" alt="Minor Cuts">
-          <div class="card-body">
-            <h5 class="card-title">🩹 Minor Cuts & Scrapes</h5>
-            <p class="card-text">Clean with water, press to stop bleeding, cover with cloth/bandage.</p>
-          </div>
-        </a>
+      <div class="col-md-6">
+        <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
+        <ul>
+          <li>If the bleeding lasts longer than 20 minutes</li>
+          <li>If nosebleeds occur frequently without cause</li>
+          <li>If bleeding follows an injury or accident</li>
+          <li>If the person feels faint, weak, or has trouble breathing</li>
+          <li>If the person is on blood-thinning medication</li>
+        </ul>
       </div>
-
-      <!-- Minor Burns -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="minor burns">
-        <a href="burns.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Minor_Burn-removebg-preview.png" class="card-img-top" alt="Burns">
-          <div class="card-body">
-            <h5 class="card-title">🔥 Minor Burns</h5>
-            <p class="card-text">Run cool water 10–15 mins, cover loosely, no ice/butter.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Seizure -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="seizure epilepsy">
-        <a href="seizure.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Seizure_Epilepsy-removebg-preview.png" class="card-img-top" alt="Seizure">
-          <div class="card-body">
-            <h5 class="card-title">⚡ Seizure (Epilepsy)</h5>
-            <p class="card-text">Lay on side, remove harmful objects, do not hold down, time seizure.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Allergic Reaction -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="allergic reaction">
-        <a href="allergy.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Allergic_Reaction_Mild-removebg-preview.png" class="card-img-top" alt="Allergic Reaction">
-          <div class="card-body">
-            <h5 class="card-title">🤧 Allergic Reaction (Mild)</h5>
-            <p class="card-text">Calm person, remove allergen, watch for worsening signs.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Asthma Attack -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="asthma attack">
-        <a href="asthma.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Asthma-removebg-preview.png" class="card-img-top" alt="Asthma Attack">
-          <div class="card-body">
-            <h5 class="card-title">🌬️ Asthma Attack</h5>
-            <p class="card-text">Keep calm, sit upright, encourage slow breathing, avoid triggers.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Splinters / Small Foreign Objects -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="splinters foreign objects">
-        <a href="splinters.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Splinters-removebg-preview (1).png" class="card-img-top" alt="Splinter">
-          <div class="card-body">
-            <h5 class="card-title">🩹 Splinters & Stuck Bits</h5>
-            <p class="card-text">Wash the area, gently remove the splinter with clean tweezers, clean the spot again, and cover it with a bandage.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Heat Exhaustion -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="heat exhaustion sunstroke">
-        <a href="heat.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Heat_Exhaustion-removebg-preview.png" class="card-img-top" alt="Heat Exhaustion">
-          <div class="card-body">
-            <h5 class="card-title">☀️ Heat Exhaustion / Sunstroke</h5>
-            <p class="card-text">Move to cooler area, give sips of water, apply wet cloth, loosen clothes.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Hyperventilation / Panic Attack -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="hyperventilation panic attack">
-        <a href="panic.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Hyper_Ventilation-removebg-preview.png" class="card-img-top" alt="Panic Attack">
-          <div class="card-body">
-            <h5 class="card-title">😰 Hyperventilation / Panic Attack</h5>
-            <p class="card-text">Talk calmly, guide breathing slowly, count together, reassure.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Dehydration -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="dehydration">
-        <a href="dehydration.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Dehydration-removebg-preview.png" class="card-img-top" alt="Dehydration">
-          <div class="card-body">
-            <h5 class="card-title">💧 Dehydration</h5>
-            <p class="card-text">Give small sips of water or ORS, rest in cool environment.</p>
-          </div>
-        </a>
-      </div>
-
-      <!-- Insect Bites -->
-      <div class="col-md-6 col-lg-4 card-link" data-title="insect bites bee stings">
-        <a href="insect.html" class="card h-100 text-decoration-none text-dark">
-          <img src="Files/Instruction/Insect_Bite-removebg-preview.png" class="card-img-top" alt="Insect Bite">
-          <div class="card-body">
-            <h5 class="card-title">🐝 Insect Bites / Bee Stings</h5>
-            <p class="card-text">Remove stinger, wash, apply cold compress, observe for reactions.</p>
-          </div>
-        </a>
-      </div>
-
     </div>
   </div>
+<!-- Prevention -->
+<div class="container py-5">
+  <div class="row g-4">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🧾 Adult Nosebleed Prevention</h2>
+      <p>Nosebleeds in adults are often caused by dry air, nasal irritation, or injury. Prevention focuses on keeping the nasal passages moist, avoiding trauma, and maintaining a healthy environment.</p>
+    </div>
+    <hr>
 
+    <div class="col-md-6">
+      <h3 class="section-heading">💧 Keep Your Nose Moist</h3>
+      <ul>
+        <li>Use a saline nasal spray or gel regularly to prevent dryness inside your nose.</li>
+        <li>Run a humidifier in your home, especially during dry or winter months.</li>
+        <li>Avoid overuse of nasal decongestant sprays, as they can dry out the nasal lining.</li>
+        <li>Drink plenty of water to stay hydrated and keep your nasal tissues healthy.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention1.jpg" alt="Keep Nose Moist" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention2.PNG" alt="Avoid Nose Picking or Injury" class="w-50 img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h3 class="section-heading">🚫 Avoid Nose Picking or Injury</h3>
+      <ul>
+        <li>Do not pick your nose or insert any objects, including cotton swabs, inside the nostrils.</li>
+        <li>Blow your nose gently to prevent irritation or rupturing small blood vessels.</li>
+        <li>Trim your fingernails to reduce the risk of accidental scratching inside your nose.</li>
+        <li>Wear protective gear if you engage in activities or sports where facial injury is possible.</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">⚠️ Maintain a Healthy Environment</h3>
+      <ul>
+        <li>Avoid cigarette smoke, strong chemical fumes, and allergens that can irritate the nose.</li>
+        <li>Keep your indoor air clean and slightly humid to prevent nasal dryness.</li>
+        <li>Consult a doctor if you experience frequent nosebleeds or if they occur without any clear cause.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention3.jpg" alt="Healthy Environment" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+
+<!-- Medicine -->
+<div class="container py-2">
+  <div class="row g-1">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🩺 Treatment & Medication</h2>
+      <p>Medicines or sprays that may be recommended to aid recovery or prevent future nosebleeds.</p>
+    </div>
+    <hr>
+
+    <div class="col-12">
+      <h3 class="section-heading">🚫 No medicine can instantly stop a nosebleed.</h3>
+      <p>When bleeding starts, only physical steps—like pinching the soft part of your nose, leaning forward, and applying gentle pressure—can help control it. Medicines may be used later to heal or prevent further irritation, but not to stop bleeding immediately.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Download Button Section -->
+<div class="text-center mb-5">
+  <a href="pdfs/adult chocking.pdf" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -542,45 +537,127 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
-    gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray(".card").forEach(card => {
-  gsap.from(card, {
-    opacity: 0,
-    y: 30,
-    duration: 0.6,
-    ease: "power2.out",
+    // <!-- GSAP Animations -->
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
+    "(min-width: 769px)": function () {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+      // Animate images differently
+      gsap.utils.toArray("img").forEach((img, i) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+    },
+    // ✅ Mobile (max-width: 768px)
+    "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
+        });
+      });
+    }
+  });
+// <!-- GSAP Animation for Button -->
+  gsap.from(".download-btn", {
     scrollTrigger: {
-      trigger: card,
+      trigger: ".download-btn",
       start: "top 90%",
-      toggleActions: "play none none none"
-    }
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
   });
 
-  // Hover subtle scale
-  card.addEventListener("mouseenter", () => {
-    gsap.to(card, { scale: 1.03, duration: 0.3 });
+  // Hover animation
+  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
+    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
   });
-  card.addEventListener("mouseleave", () => {
-    gsap.to(card, { scale: 1, duration: 0.3 });
+  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
+    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
   });
-});
+    // Splash close
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
+        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+      }, 800);
+    });
 
-// Live Search Filter
-const searchInput = document.getElementById('searchInput');
-searchInput.addEventListener('input', function() {
-  const filter = this.value.toLowerCase();
-  const cards = document.querySelectorAll('.card-link');
-
-  cards.forEach(card => {
-    const title = card.getAttribute('data-title').toLowerCase();
-    if(title.includes(filter)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-});
+    // Redirect on click
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      window.location.href = "instructions.html";
+    });
   </script>
 </body>
 </html>
