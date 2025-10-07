@@ -41,6 +41,7 @@
     .top-hero {
       background-image: url('Files/banner image.jpg');
       background-size: cover;
+      height: 100vh;
       background-position: center;
       background-repeat: no-repeat;
       color: #fff;
@@ -113,8 +114,7 @@
       max-width: 1200px;
       margin: 0 auto;
    position: absolute;
-  top: 50%;
-  bottom: 50%;
+  top: 30%;
       text-align: center;
       position: relative;
       z-index: 2;
@@ -123,6 +123,8 @@
     .hero-head,
     .hero-sub {
       color: white !important;
+        text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+        margin-bottom: 2%;
     }
 
     .btn-emergency {
@@ -636,7 +638,7 @@
       </div>
 
       <!-- spacing preserved without touching header layout -->
-      <div style="height:420px"></div>
+      <!-- <div style="height:420px"></div> -->
 
 
     </div>
@@ -1156,6 +1158,34 @@
       // left/right buttons already nudging both strips above
     })();
 
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Animate section heading and paragraph
+  gsap.from(".text-danger, .text-muted", {
+    opacity: 0,
+    y: 50,
+    duration: 1,
+    stagger: 0.2,
+    scrollTrigger: {
+      trigger: ".text-danger", // section starts when heading enters
+      start: "top 85%",
+    }
+  });
+
+  // Animate the feature cards
+  gsap.from(".row .col-md-3", {
+    opacity: 0,
+    y: 80,
+    scale: 0.8,
+    duration: 1.2,
+    ease: "power3.out",
+    stagger: 0.3,
+    scrollTrigger: {
+      trigger: ".row",
+      start: "top 80%",
+      toggleActions: "play none none reverse",
+    }
+  });
   </script>
 
 </body>
