@@ -112,6 +112,9 @@
       padding: 4rem 1rem 10rem;
       max-width: 1200px;
       margin: 0 auto;
+   position: absolute;
+  top: 50%;
+  bottom: 50%;
       text-align: center;
       position: relative;
       z-index: 2;
@@ -119,7 +122,7 @@
 
     .hero-head,
     .hero-sub {
-      color: #000 !important;
+      color: white !important;
     }
 
     .btn-emergency {
@@ -182,15 +185,15 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
-      padding: 3rem 1rem;
+      padding: 3rem 3rem;
       z-index: 3;
       margin-top: 3rem;
       overflow-x: auto;
       scroll-behavior: smooth;
-      position: absolute;
+      /* position: absolute;
       bottom: -70px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%); */
       width: 100%;
     }
 
@@ -202,6 +205,9 @@
       overflow: hidden;
       transition: all 0.3s ease;
       text-align: center;
+        width: 22%;     /* increase from 220px */
+  height: 600px;    /* optional fixed height */
+  padding: 1rem;    /* adds inner spacing around content */
     }
 
     .mini-card:hover {
@@ -227,10 +233,11 @@
     }
 
     .mini-card p {
+      padding: 2%;
       font-size: 0.8rem;
       color: #444;
       line-height: 1.45;
-      margin-bottom: 0;
+      margin: 2%;
     }
 
     @media (max-width: 768px) {
@@ -631,7 +638,11 @@
       <!-- spacing preserved without touching header layout -->
       <div style="height:420px"></div>
 
-      <div class="card-strip">
+
+    </div>
+  </header>
+<div class="container">
+        <div class="card-strip">
         <div class="mini-card">
           <img src="Files/Emergency First Aid.jpg" alt="card">
           <div class="body">
@@ -665,9 +676,8 @@
           </div>
         </div>
       </div>
-    </div>
-  </header>
-
+      
+</div>
   <div class="container my-5">
     <h2 class="fw-bold text-center mb-5">⚙️ How It Works</h2>
     <div class="row g-4 text-center">
@@ -697,7 +707,7 @@
 
   <!-- MARQUEE INSTRUCTION SECTION -->
   <section id="instruction-marquee" class="py-5 text-center" style="background-color: var(--paper);">
-    <div class="container">
+    <div >
       <h2 class="fw-bold mb-4">Instant Emergency Instructions</h2>
 
       <div class="marquee-container position-relative">
@@ -736,6 +746,74 @@
       <a href="Instructions.html" class="btn btn-main mt-4 px-4 py-2">View All Instructions</a>
     </div>
   </section>
+<section class="py-5 bg-white">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4 text-danger">🤔 Why Choose AI MEDIC?</h2>
+    <p class="text-muted mb-5">Choose AI MEDIC for cutting-edge, AI-powered healthcare solutions that make diagnosis smarter and care faster.</p>
+    <div class="row g-4">
+      <div class="col-md-3">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-clock fa-2x text-danger mb-3"></i>
+          <h5 class="fw-bold">Instant Response</h5>
+          <p>Get life-saving guidance within seconds.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-globe fa-2x text-danger mb-3"></i>
+          <h5 class="fw-bold">Works Anywhere</h5>
+        <p>Access support anytime, online or offline</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-shield-heart fa-2x text-danger mb-3"></i>
+          <h5 class="fw-bold">Trusted By Experts</h5>
+          <p>Built and verified by certified healthcare professionals.</p>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-mobile-screen fa-2x text-danger mb-3"></i>
+          <h5 class="fw-bold">User Friendly Design</h5>
+          <p>Simple, fast, and easy for all age groups.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- POWERED BY SMART AI -->
+<section class="py-5 bg-white">
+  <div class="container text-center">
+    <h2 class="fw-bold mb-4 text-danger">🤖 Powered by Smart AI</h2>
+    <p class="text-muted mb-5">AI MEDIC combines artificial intelligence and healthcare expertise to provide real-time guidance and lifesaving insights.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-brain fa-3x text-danger mb-3"></i>
+          <h5 class="fw-bold">AI Symptom Checker</h5>
+          <p>Enter your symptoms, and our AI instantly analyzes possible causes and first steps for care.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-microphone-lines fa-3x text-danger mb-3"></i>
+          <h5 class="fw-bold">Voice Recognition</h5>
+          <p>Speak instead of typing — AI MEDIC understands emergency voice commands hands-free.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-4 rounded-4 shadow-sm h-100">
+          <i class="fa-solid fa-heart-pulse fa-3x text-danger mb-3"></i>
+          <h5 class="fw-bold">Real-time Health Tracking</h5>
+          <p>Monitor vitals like pulse, oxygen, and breathing rate using connected smart devices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
   <!-- RATING CARDS -->
   <section class="myratingcards">
