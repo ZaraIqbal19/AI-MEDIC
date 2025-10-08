@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI MEDIC</title>
+  <title>AI MEDIC — Minor Burns</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -181,13 +181,6 @@
       background: var(--brand-red-dark);
       transform: scale(1.08);
     }
-            /* ✅ Uniform Image Size */
-    .img-fluid, 
-    .w-100 {
-      height: 50vh;          /* Set desired uniform height */
-      object-fit: cover;      /* Keeps images proportional and cropped neatly */
-      width: 100%;            /* Full width in their container */
-    }
   </style>
 </head>
 <body>
@@ -224,6 +217,7 @@
   <button class="close-btn" id="closeBtn" title="Go to Instructions">
     <i class="fas fa-times"></i>
   </button>
+
   <!-- Hero -->
   <div class="container py-5">
     <div class="row g-4">
@@ -242,12 +236,12 @@
           <li>Small flash burns (e.g., hair straightener, soldering)</li>
         </ul>
       </div>
-         <div class="col-md-6 text-center">
-        <img src="Files/Minor Burns/1.PNG" alt="Minor Burn Causes" class="w-100 img-fluid rounded shadow">
+      <div class="col-md-6 text-center hero-image">
+        <img src="Files/Minor Burns/1.PNG" alt="Common causes of minor burns" class="w-100 img-fluid rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Minor Burns/2.webp" alt="Immediate first aid for burns" class="w-100 img-fluid rounded shadow">
+        <img src="Files/Minor Burns/2.PNG" alt="Immediate first aid for burns" class="w-100 img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🚑 Immediate First Aid (Adults & Children)</h3>
@@ -270,11 +264,11 @@
         </ul>
       </div>
       <div class="col-md-6 text-center">
-        <img src="Files/Minor Burns/3.avif" alt="Do not apply home remedies to burns" class="img-fluid rounded shadow">
+        <img src="Files/Minor Burns/3-removebg-preview.png" alt="Do not apply home remedies to burns" class="img-fluid rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Minor Burns/4.jpg" alt="When to seek help for burns" class="img-fluid rounded shadow">
+        <img src="Files/Minor Burns/4-removebg-preview.png" alt="When to seek help for burns" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
@@ -309,11 +303,11 @@
       </ul>
     </div>
     <div class="col-md-6 text-center">
-      <img src="Files/Minor Burns/Prevention1.avif" alt="Child burn prevention" class="img-fluid rounded shadow">
+      <img src="Files/Minor Burns/Prevention1.jpg" alt="Child burn prevention" class="img-fluid rounded shadow">
     </div>
 
     <div class="col-md-6 text-center">
-      <img src="Files/Minor Burns/Prevention2.jpg" alt="Kitchen safety to prevent burns" class="w-50 img-fluid rounded shadow">
+      <img src="Files/Minor Burns/Prevention2.PNG" alt="Kitchen safety to prevent burns" class="w-50 img-fluid rounded shadow">
     </div>
     <div class="col-md-6">
       <h3 class="section-heading">🏠 Home & Kitchen Tips (All Ages)</h3>
@@ -377,14 +371,16 @@
     </div>
   </div>
 </div>
+
 <!-- Download Button Section -->
 <div class="text-center mb-5">
-  <a href="pdfs/adult chocking.pdf" download
+  <a href="pdfs/minor_burns.pdf" download
      class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
     <i class="fas fa-file-pdf"></i>
     DOWNLOAD PRINTABLE VERSION
   </a>
 </div>
+
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -439,6 +435,7 @@
       </div>
     </div>
   </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -448,10 +445,11 @@
         document.getElementById("splash").style.display = "none";
       }, 600);
     });
-    // Live Clock
+    // Live Clock (note: element with id="livetime" not present on this page; kept to match original script)
     setInterval(() => {
       let now = new Date();
-      document.getElementById("livetime").innerText = now.toLocaleTimeString();
+      const el = document.getElementById("livetime");
+      if(el) el.innerText = now.toLocaleTimeString();
     }, 1000);
 
     // ===== GSAP Animations (Desktop + Mobile) =====
@@ -548,7 +546,7 @@
       });
     });
 
-    // Scroll-to-top button show/hide via ScrollTrigger
+    // Scroll-to-top button show/hide via ScrollTrigger (toTop not present on page; kept to match original behaviour if added later)
     if(!reduceMotion){
       ScrollTrigger.create({
         start: 300,
@@ -558,6 +556,7 @@
     }
     function showToTop(show){
       const btn = document.getElementById("toTop");
+      if(!btn) return;
       if(show){
         btn.style.visibility = "visible";
         gsap.to(btn, {opacity:1, y:0, duration:.25, ease:"power1.out"});
@@ -565,7 +564,8 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
-    // <!-- GSAP Animations -->
+
+  // Additional GSAP matchMedia blocks (kept from the original)
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.matchMedia({
     // For desktop (min-width: 769px)
@@ -653,7 +653,8 @@
       });
     }
   });
-// <!-- GSAP Animation for Button -->
+
+  // Download button animation + hover
   gsap.from(".download-btn", {
     scrollTrigger: {
       trigger: ".download-btn",
@@ -666,26 +667,33 @@
     ease: "back.out(1.7)"
   });
 
-  // Hover animation
-  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
-    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
+  document.querySelectorAll(".download-btn").forEach(btn => {
+    btn.addEventListener("mouseenter", function () {
+      gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
+    });
+    btn.addEventListener("mouseleave", function () {
+      gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
+    });
   });
-  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
-    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
-  });
-    // Splash close
+
+    // Splash close + show close button
     window.addEventListener("load", () => {
       setTimeout(() => {
-        document.getElementById("splash").style.display = "none";
+        const splash = document.getElementById("splash");
+        if(splash) splash.style.display = "none";
         // ✅ Show close button with GSAP
-        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+        const closeBtn = document.getElementById("closeBtn");
+        if(closeBtn) gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
       }, 800);
     });
 
     // Redirect on click
-    document.getElementById("closeBtn").addEventListener("click", () => {
-      window.location.href = "instructions.html";
-    });
+    const closeBtn = document.getElementById("closeBtn");
+    if(closeBtn){
+      closeBtn.addEventListener("click", () => {
+        window.location.href = "instructions.html";
+      });
+    }
   </script>
 </body>
 </html>

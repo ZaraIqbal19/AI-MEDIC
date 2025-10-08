@@ -14,7 +14,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* ======= COLORS & BASE ======= */
     :root{
       --brand-red:#e60000;
       --brand-red-dark:#c40000;
@@ -39,48 +38,153 @@
     .navbar-brand .text-danger,
     .navbar-brand,
     .nav-link:hover{ color:var(--brand-red) !important; }
-    .header .container{ max-width:1100px; }
+  .header .container{ max-width:1100px; }
     .hero-section{ padding:60px 15px; }
     .hero-image img{
       width:100%;
       border-radius:20px;
       display:block;
     }
-    .section-heading { color:var(--brand-red); font-weight:600; }
-    /* Buttons */
-    .btn-emergency{ background-color:var(--brand-red); color:#fff; border:none; }
-    .btn-emergency:hover{ background-color:var(--brand-red-dark); }
-    .btn-ask-ai{ background:#f0f0f0; color:#333; border:none; }
-    .btn-ask-ai:hover{ background:#eaeaea; }
-    /* Splash */
-    .splash{ position:fixed; inset:0; height:100vh; width:100vw; background-color:#ffffff;
-      display:flex; justify-content:center; align-items:center; z-index:9999;}
-    .app-logo{ width:90px; height:90px; opacity:0; animation:fadeZoom 1.2s ease-in-out forwards; }
-    @keyframes fadeZoom{ 0%{ transform:scale(.6); opacity:0; } 100%{ transform:scale(1); opacity:1; } }
+    .btn-emergency{
+      background-color:var(--brand-red);
+      color:#fff;
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-emergency:hover{
+      background-color:var(--brand-red-dark);
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+  
+    .btn-ask-ai{
+      background-color:#f0f0f0;
+      color:#333;
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-ask-ai:hover{
+      background-color:#eaeaea;
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+    .splash{
+      position:fixed; inset:0;
+      height:100vh; width:100vw;
+      background-color:#ffffff;
+      display:flex; justify-content:center; align-items:center;
+      z-index:9999;
+    }
+    .app-logo{
+      width:90px; height:90px; opacity:0;
+      animation:fadeZoom 1.2s ease-in-out forwards;
+    }
+    @keyframes fadeZoom{
+      0%{ transform:scale(.6); opacity:0; }
+      100%{ transform:scale(1); opacity:1; }
+    }
     .brand-title{ font-size:24px; font-weight:700; margin-top:15px; color:#d70000; }
     .tagline{ font-size:14px; color:#444; margin-top:5px; }
-    .dots span{ display:inline-block; width:6px; height:6px; margin:8px 2px; background-color:#d70000;
-      border-radius:50%; animation:blink 1.2s infinite ease-in-out both; }
+    .dots span{
+      display:inline-block; width:6px; height:6px; margin:8px 2px;
+      background-color:#d70000; border-radius:50%;
+      animation:blink 1.2s infinite ease-in-out both;
+    }
     .dots span:nth-child(2){ animation-delay:.2s; }
     .dots span:nth-child(3){ animation-delay:.4s; }
-    @keyframes blink{ 0%,80%,100%{ opacity:0; } 40%{ opacity:1; } }
-    /* Footer */
-    footer{ background-color: #fff; color: var(--ink); padding:50px 0 20px; margin-top:50px; }
-    footer h5, footer h6{ font-size:1.15rem; font-weight:600; margin-bottom:20px; text-transform:uppercase; color:var(--brand-red); }
+    @keyframes blink{
+      0%,80%,100%{ opacity:0; }
+      40%{ opacity:1; }
+    }
+
+    footer{
+      background-color: #fff;
+      color: var(--ink);
+      padding:50px 0 20px;
+      margin-top:50px;
+      box-shadow:0 -4px 16px rgba(0,0,0,.05);
+    }
+    footer h5, footer h6{
+      font-size:1.15rem;     
+      font-weight:600;       
+      margin-bottom:20px;
+      text-transform:uppercase;
+      color:var(--brand-red);
+      letter-spacing:.3px;
+    }
     .footertext{ color:var(--brand-red) !important; }
-    footer a.footer-link{ color:var(--ink-2); text-decoration:none; display:block; margin-bottom:8px; position:relative; }
-    footer a.footer-link:hover{ color:var(--brand-red); }
-    /* Social */
-    .social-icon{ display:inline-block; margin-left:10px; font-size:1.1rem; color:var(--ink-2); }
-    .social-icon:hover{ color:var(--brand-red); }
+
+    footer a.footer-link{
+      color:var(--ink-2);
+      text-decoration:none;
+      display:block;
+      margin-bottom:8px;
+      position:relative;
+      transition:color .25s ease;
+    }
+    /* subtle underline grow on hover */
+    footer a.footer-link::after{
+      content:'';
+      position:absolute;
+      left:0; bottom:-2px;
+      width:0; height:2px;
+      background:var(--brand-red);
+      transition:width .25s ease;
+    }
+    footer a.footer-link:hover{
+      color:var(--brand-red);
+    }
+    footer a.footer-link:hover::after{ width:100%; }
+
+    /* Social icons row + hover */
+    .social-icon{
+      display:inline-block;
+      margin-left:10px;
+      font-size:1.1rem;
+      color:var(--ink-2);
+      transition: transform .2s ease, color .25s ease, text-shadow .2s ease;
+    }
+    .social-icon:first-child{ margin-left:0; }
+    .social-icon:hover{
+      color:var(--brand-red);
+      transform: translateY(-1px) scale(1.06);
+      text-shadow:0 0 10px rgba(230,0,0,.15);
+    }
+    /* Fine-tuned alignment & spacing */
     @media (max-width: 991.98px){
       .hero-section .row > [class*="col-"]{ text-align:center; }
+      .hero-section .btn{ margin-bottom:10px; }
       .social-icon{ margin:0 8px; }
+    }
+        .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
     }
   </style>
 </head>
 <body>
-  <!-- Splash -->
+  <!-- Splash Screen -->
   <div class="splash" id="splash">
     <div class="logo-wrap text-center">
       <img src="Files/logo.png" alt="AI Medic Logo" class="app-logo"/>
@@ -110,15 +214,17 @@
       </div>
     </nav>
   </div>
-
-  <!-- Hero (Nosebleed) -->
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
+  <!-- Hero -->
   <div class="container py-5">
     <div class="row g-4">
       <div class="col-12 text-center">
         <h2 class="main-heading">🩸 First Aid for Nosebleed (Epistaxis)</h2>
         <p>A nosebleed is usually not serious, but it can be scary. Stay calm and help the person sit upright. Lean them slightly forward and pinch the soft part of the nose for 10–15 minutes. Avoid tilting the head back, as this can cause blood to flow into the throat. If bleeding does not stop, seek medical help immediately.</p>
       </div>
-
+<hr>
       <div class="col-md-6">
         <h3 class="section-heading">⚠️ Common Causes of Nosebleeds</h3>
         <ul>
@@ -176,9 +282,76 @@
       </div>
     </div>
   </div>
+<!-- Prevention -->
+<div class="container py-5">
+  <div class="row g-4">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🧾 Adult Nosebleed Prevention</h2>
+      <p>Nosebleeds in adults are often caused by dry air, nasal irritation, or injury. Prevention focuses on keeping the nasal passages moist, avoiding trauma, and maintaining a healthy environment.</p>
+    </div>
+    <hr>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">💧 Keep Your Nose Moist</h3>
+      <ul>
+        <li>Use a saline nasal spray or gel regularly to prevent dryness inside your nose.</li>
+        <li>Run a humidifier in your home, especially during dry or winter months.</li>
+        <li>Avoid overuse of nasal decongestant sprays, as they can dry out the nasal lining.</li>
+        <li>Drink plenty of water to stay hydrated and keep your nasal tissues healthy.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention1.jpg" alt="Keep Nose Moist" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention2.PNG" alt="Avoid Nose Picking or Injury" class="w-50 img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h3 class="section-heading">🚫 Avoid Nose Picking or Injury</h3>
+      <ul>
+        <li>Do not pick your nose or insert any objects, including cotton swabs, inside the nostrils.</li>
+        <li>Blow your nose gently to prevent irritation or rupturing small blood vessels.</li>
+        <li>Trim your fingernails to reduce the risk of accidental scratching inside your nose.</li>
+        <li>Wear protective gear if you engage in activities or sports where facial injury is possible.</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">⚠️ Maintain a Healthy Environment</h3>
+      <ul>
+        <li>Avoid cigarette smoke, strong chemical fumes, and allergens that can irritate the nose.</li>
+        <li>Keep your indoor air clean and slightly humid to prevent nasal dryness.</li>
+        <li>Consult a doctor if you experience frequent nosebleeds or if they occur without any clear cause.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Nose Bleed/Prevention3.jpg" alt="Healthy Environment" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+
+<!-- Medicine -->
+<div class="container py-2">
+  <div class="row g-1">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🩺 Treatment & Medication</h2>
+      <p>Medicines or sprays that may be recommended to aid recovery or prevent future nosebleeds.</p>
+    </div>
+    <hr>
+
+    <div class="col-12">
+      <h3 class="section-heading">🚫 No medicine can instantly stop a nosebleed.</h3>
+      <p>When bleeding starts, only physical steps—like pinching the soft part of your nose, leaning forward, and applying gentle pressure—can help control it. Medicines may be used later to heal or prevent further irritation, but not to stop bleeding immediately.</p>
+    </div>
+  </div>
+</div>
+
 <!-- Download Button Section -->
-<div class="text-center my-5">
-  <a href="" download
+<div class="text-center mb-5">
+  <a href="pdfs/adult chocking.pdf" download
      class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
     <i class="fas fa-file-pdf"></i>
     DOWNLOAD PRINTABLE VERSION
@@ -188,12 +361,14 @@
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
       <div class="row text-md-left">
+        <!-- LOGO & DESCRIPTION -->
         <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
           <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
           <p>
-            <a class="footer-link d-inline" href="index.html">AI Medic</a> provides first-aid and emergency guidance for everyone. Stay informed, act quickly, and keep yourself and others safe.
+            <a class="footer-link d-inline" href="index.html">AI Medic</a> is a smart medical assistant designed to provide instant, reliable, and easy-to-follow health guidance. Our mission is to make emergency help and first-aid knowledge accessible to everyone, anytime and anywhere.
           </p>
         </div>
+        <!-- WEBSITE LINKS -->
         <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
           <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
           <ul class="list-unstyled">
@@ -203,36 +378,41 @@
             <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
           </ul>
         </div>
+        <!-- CONTACT INFO -->
         <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
           <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
-          <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
-          <p><i class="fas fa-envelope me-2"></i> aimedic807@gmail.com</p>
-          <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
+          <p class="text-dark-50"><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
+          <p class="text-dark-50"><i class="fas fa-envelope me-2 mb-2"></i> aimedic807@gmail.com</p>
+          <p class="text-dark-50"><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
         </div>
-        <a href="Code Crafters.html" class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
+
+        <a href="Code Crafters.html"
+           class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
           <span class="border-top border-bottom border-info py-2 d-inline-block">code crafters</span>
         </a>
+
         <hr class="my-4 text-dark-50">
+
         <div class="row align-items-center">
           <div class="col-md-6 col-lg-8">
-            <p class="text-dark-50 mb-0">© 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.</p>
+            <p class="text-dark-50 mb-0">
+              © 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.
+            </p>
           </div>
           <div class="col-md-6 col-lg-4 text-md-end">
-            <a href="https://www.facebook.com/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.whatsapp.com/" class="social-icon"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://www.instagram.com/" class="social-icon"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/" class="social-icon"><i class="fab fa-github"></i></a>
+            <!-- Social icons: will animate one-by-one -->
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.whatsapp.com/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
           </div>
         </div>
       </div>
     </div>
   </footer>
-
-  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- GSAP Animations (same as before) -->
-   
+
   <script>
     // Splash (kept as-is functionally)
     window.addEventListener("load", () => {
@@ -465,7 +645,19 @@
   document.querySelector(".download-btn").addEventListener("mouseleave", function () {
     gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
   });
+    // Splash close
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
+        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+      }, 800);
+    });
 
+    // Redirect on click
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      window.location.href = "instructions.html";
+    });
   </script>
 </body>
 </html>

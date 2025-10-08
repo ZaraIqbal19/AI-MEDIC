@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI MEDIC</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root{
+      --brand-red:#e60000;
+      --brand-red-dark:#c40000;
+      --ink:#111;
+      --ink-2:#333;
+      --paper:#fcf7f7;
+    }
+    html { scroll-behavior:smooth; }
+    body{
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      overflow-x:hidden;
+      line-height:1.55;
+    }
+    .navbar{
+      background:#fff !important;
+      box-shadow:0 6px 24px rgba(0,0,0,.06);
+    }
+    .navbar-brand,
+    .nav-link{ color:var(--ink-2) !important; }
+    .navbar-brand .text-danger,
+    .navbar-brand,
+    .nav-link:hover{ color:var(--brand-red) !important; }
+
+    .hero-section{ padding:60px 15px; }
+    .hero-image img{
+      width:100%;
+      border-radius:20px;
+      display:block;
+    }
+
+    .btn-emergency{
+      background-color:var(--brand-red);
+      color:#fff;
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-emergency:hover{
+      background-color:var(--brand-red-dark);
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+
+    footer{
+      background-color:#fff;
+      color:var(--ink);
+      padding:50px 0 20px;
+      margin-top:50px;
+      box-shadow:0 -4px 16px rgba(0,0,0,.05);
+    }
+    footer h5, footer h6{
+      font-size:1.15rem;
+      font-weight:600;
+      margin-bottom:20px;
+      text-transform:uppercase;
+      color:var(--brand-red);
+    }
+    .footertext{ color:var(--brand-red) !important; }
+
+    footer a.footer-link{
+      color:var(--ink-2);
+      text-decoration:none;
+      display:block;
+      margin-bottom:8px;
+      position:relative;
+      transition:color .25s ease;
+    }
+    footer a.footer-link::after{
+      content:'';
+      position:absolute;
+      left:0; bottom:-2px;
+      width:0; height:2px;
+      background:var(--brand-red);
+      transition:width .25s ease;
+    }
+    footer a.footer-link:hover{
+      color:var(--brand-red);
+    }
+    footer a.footer-link:hover::after{ width:100%; }
+
+    .social-icon{
+      display:inline-block;
+      margin-left:10px;
+      font-size:1.1rem;
+      color:var(--ink-2);
+      transition: transform .2s ease, color .25s ease;
+    }
+    .social-icon:hover{
+      color:var(--brand-red);
+      transform:translateY(-1px) scale(1.06);
+    }
+
+    @media (max-width: 991.98px){
+      .hero-section .row > [class*="col-"]{ text-align:center; }
+      .hero-section .btn{ margin-bottom:10px; }
+      .social-icon{ margin:0 8px; }
+    }
+
+    .splash{
+      position:fixed; inset:0;
+      height:100vh; width:100vw;
+      background-color:#fff;
+      display:flex; justify-content:center; align-items:center;
+      z-index:9999;
+    }
+    .app-logo{
+      width:90px; height:90px; opacity:0;
+      animation:fadeZoom 1.2s ease-in-out forwards;
+    }
+    @keyframes fadeZoom{
+      0%{ transform:scale(.6); opacity:0; }
+      100%{ transform:scale(1); opacity:1; }
+    }
+
+    .brand-title{ font-size:24px; font-weight:700; margin-top:15px; color:#d70000; }
+    .tagline{ font-size:14px; color:#444; margin-top:5px; }
+
+    .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="logo-wrap text-center">
+      <img src="Files/logo.png" alt="AI Medic Logo" class="app-logo"/>
+      <div class="brand-title">AI MEDIC</div>
+      <div class="tagline">Stay calm, act fast – your AI medic is here.</div>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+    <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+      <img src="Files/logo.png" width="32" alt="AI Medic Logo" class="me-2">
+      <span class="text-danger">AI MEDIC</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="instructions.html">Instruction</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <!-- Hero -->
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 text-center">
+        <h2 class="main-heading">🪵 First Aid for Splinters & Stuck Bits</h2>
+        <p>Splinters, glass, or other small objects stuck in the skin can cause pain and infection if not treated properly. Stay calm, clean the area, and remove the object carefully using clean tools. Always wash your hands before and after treatment.</p>
+      </div>
+<hr>
+      <div class="col-md-6">
+        <h3 class="section-heading">⚠️ Common Causes</h3>
+        <ul>
+          <li>Handling wood, thorns, or metal fragments</li>
+          <li>Walking barefoot outdoors</li>
+          <li>Broken glass or metal shards</li>
+          <li>Accidents while gardening or crafting</li>
+          <li>Inadequate protective gear</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Splinters/1.PNG" alt="Common Causes" class="w-100 img-fluid rounded shadow">
+      </div>
+
+      <div class="col-md-6 text-center">
+        <img src="Files/Splinters/2.PNG" alt="First Aid Steps" class="w-100 img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🚑 What to Do</h3>
+        <ul>
+          <li>Wash your hands thoroughly with soap and water</li>
+          <li>Clean the affected area gently with antiseptic</li>
+          <li>Use sterilized tweezers to grasp and pull out the splinter slowly</li>
+          <li>Rinse again and apply an antiseptic ointment</li>
+          <li>Cover with a clean bandage if necessary</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="section-heading">❌ What NOT to Do</h3>
+        <ul>
+          <li>Do not squeeze or dig with dirty tools</li>
+          <li>Do not use needles that aren’t sterilized</li>
+          <li>Do not ignore deep or painful splinters</li>
+          <li>Do not try to remove objects embedded near eyes or deep under skin</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Splinters/3.PNG" alt="What Not to Do" class="img-fluid rounded shadow">
+      </div>
+
+      <div class="col-md-6 text-center">
+        <img src="Files/Splinters/4.PNG" alt="Seek Help" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
+        <ul>
+          <li>If the splinter is deep, large, or made of glass/metal</li>
+          <li>If redness, swelling, or pus develops</li>
+          <li>If it’s near the eyes, nails, or genitals</li>
+          <li>If you cannot remove it completely</li>
+          <li>If your last tetanus shot was over 10 years ago</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- Prevention -->
+<div class="container py-5">
+  <div class="row g-4">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🧾 Prevention Tips</h2>
+      <p>Simple safety steps can help prevent splinters and other stuck bits. Always protect your hands and feet, and stay cautious while handling sharp materials.</p>
+    </div>
+    <hr>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">🧤 Use Protective Gear</h3>
+      <ul>
+        <li>Wear gloves when handling wood, thorns, or metal objects.</li>
+        <li>Always wear shoes outdoors to prevent foot splinters.</li>
+        <li>Use safety goggles when cutting or grinding materials.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Splinters/Prevention1.PNG" alt="Protective Gear" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="Files/Splinters/Prevention2.PNG" alt="Clean Work Area" class="img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h3 class="section-heading">🧹 Keep Work Area Clean</h3>
+      <ul>
+        <li>Clean up debris and broken pieces after using wood or glass.</li>
+        <li>Dispose of sharp objects safely in a puncture-proof container.</li>
+        <li>Maintain good lighting to spot hazards easily.</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">💧 Maintain Healthy Skin</h3>
+      <ul>
+        <li>Moisturize your hands to avoid cracks that can trap splinters.</li>
+        <li>Check children’s toys and outdoor play areas for sharp edges.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Splinters/Prevention3.PNG" alt="Healthy Skin" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+
+<!-- Medicine -->
+<div class="container py-2">
+  <div class="row g-1">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🩺 Treatment & Medication</h2>
+      <p>Medicines and ointments that may be recommended to prevent infection or help healing after removing a splinter.</p>
+    </div>
+    <hr>
+    <div class="col-12">
+      <h3 class="section-heading">💊 Antiseptic & Antibiotic Care</h3>
+      <p>After removal, apply an antiseptic ointment such as povidone-iodine or a mild antibiotic cream. Pain relievers like paracetamol can help if the area is sore. Avoid strong disinfectants that irritate the wound.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Download -->
+<div class="text-center mb-5">
+  <a href="pdfs/splinters.pdf" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
+
+  <!-- Footer -->
+  <footer class="text-dark pt-5 pb-4">
+    <div class="container text-center text-md-start">
+      <div class="row text-md-left">
+        <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
+          <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
+          <p><a class="footer-link d-inline" href="index.html">AI Medic</a> provides instant, reliable first-aid and health guidance for emergencies — helping you stay calm and act confidently.</p>
+        </div>
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li class="mb-3"><a href="index.html" class="footer-link">HOME</a></li>
+            <li class="mb-3"><a href="instructions.html" class="footer-link">INSTRUCTION</a></li>
+            <li class="mb-3"><a href="about.html" class="footer-link">ABOUT US</a></li>
+            <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
+          <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
+          <p><i class="fas fa-map-marker-alt me-2"></i> Karachi, Pakistan</p>
+          <p><i class="fas fa-envelope me-2"></i> aimedic807@gmail.com</p>
+          <p><i class="fas fa-phone me-2"></i> +92 300 1234567</p>
+        </div>
+
+        <a href="Code Crafters.html"
+           class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
+          <span class="border-top border-bottom border-info py-2 d-inline-block">code crafters</span>
+        </a>
+
+        <hr class="my-4 text-dark-50">
+        <div class="row align-items-center">
+          <div class="col-md-6 col-lg-8">
+            <p class="text-dark-50 mb-0">
+              © 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-end">
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.whatsapp.com/" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const splash = document.getElementById('splash');
+    window.addEventListener('load', () => {
+      setTimeout(() => { splash.style.opacity = '0'; splash.style.pointerEvents='none'; }, 1000);
+      setTimeout(() => { splash.style.display = 'none'; }, 1600);
+    });
+
+    gsap.from('.main-heading', {opacity:0, y:-40, duration:1, scrollTrigger:'.main-heading'});
+    gsap.from('.section-heading', {opacity:0, x:-60, duration:1, stagger:.2, scrollTrigger:'.section-heading'});
+    gsap.from('.img-fluid', {opacity:0, y:60, duration:1.2, stagger:.3, scrollTrigger:'.img-fluid'});
+
+    const closeBtn = document.getElementById('closeBtn');
+    window.addEventListener('scroll', () => {
+      if(window.scrollY > 300){
+        closeBtn.style.opacity='1';
+        closeBtn.style.visibility='visible';
+      }else{
+        closeBtn.style.opacity='0';
+        closeBtn.style.visibility='hidden';
+      }
+    });
+    closeBtn.addEventListener('click', () => {
+      window.location.href = 'instructions.html';
+    });
+  </script>
+</body>
+</html>

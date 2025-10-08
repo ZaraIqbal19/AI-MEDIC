@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI MEDIC</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root{
+      --brand-red:#e60000;
+      --brand-red-dark:#c40000;
+      --ink:#111;
+      --ink-2:#333;
+      --paper:#fcf7f7;
+    }
+    html { scroll-behavior:smooth; }
+    body{
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+      overflow-x:hidden;
+      line-height:1.55;
+    }
+    .navbar{
+      background:#fff !important;
+      box-shadow:0 6px 24px rgba(0,0,0,.06);
+    }
+    .navbar-brand,
+    .nav-link{ color:var(--ink-2) !important; }
+    .navbar-brand .text-danger,
+    .navbar-brand,
+    .nav-link:hover{ color:var(--brand-red) !important; }
+
+    .hero-section{ padding:60px 15px; }
+    .hero-image img{
+      width:100%;
+      border-radius:20px;
+      display:block;
+    }
+    .btn-emergency{
+      background-color:var(--brand-red);
+      color:#fff;
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-emergency:hover{
+      background-color:var(--brand-red-dark);
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+  
+    .btn-ask-ai{
+      background-color:#f0f0f0;
+      color:#333;
+      border:none;
+      transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+    }
+    .btn-ask-ai:hover{
+      background-color:#eaeaea;
+      transform: translateY(-1px);
+      box-shadow:0 8px 18px rgba(0,0,0,.08);
+    }
+    .splash{
+      position:fixed; inset:0;
+      height:100vh; width:100vw;
+      background-color:#ffffff;
+      display:flex; justify-content:center; align-items:center;
+      z-index:9999;
+    }
+    .app-logo{
+      width:90px; height:90px; opacity:0;
+      animation:fadeZoom 1.2s ease-in-out forwards;
+    }
+    @keyframes fadeZoom{
+      0%{ transform:scale(.6); opacity:0; }
+      100%{ transform:scale(1); opacity:1; }
+    }
+    .brand-title{ font-size:24px; font-weight:700; margin-top:15px; color:#d70000; }
+    .tagline{ font-size:14px; color:#444; margin-top:5px; }
+    .dots span{
+      display:inline-block; width:6px; height:6px; margin:8px 2px;
+      background-color:#d70000; border-radius:50%;
+      animation:blink 1.2s infinite ease-in-out both;
+    }
+    .dots span:nth-child(2){ animation-delay:.2s; }
+    .dots span:nth-child(3){ animation-delay:.4s; }
+    @keyframes blink{
+      0%,80%,100%{ opacity:0; }
+      40%{ opacity:1; }
+    }
+
+    footer{
+      background-color: #fff;
+      color: var(--ink);
+      padding:50px 0 20px;
+      margin-top:50px;
+      box-shadow:0 -4px 16px rgba(0,0,0,.05);
+    }
+    footer h5, footer h6{
+      font-size:1.15rem;     
+      font-weight:600;       
+      margin-bottom:20px;
+      text-transform:uppercase;
+      color:var(--brand-red);
+      letter-spacing:.3px;
+    }
+    .footertext{ color:var(--brand-red) !important; }
+
+    footer a.footer-link{
+      color:var(--ink-2);
+      text-decoration:none;
+      display:block;
+      margin-bottom:8px;
+      position:relative;
+      transition:color .25s ease;
+    }
+    footer a.footer-link::after{
+      content:'';
+      position:absolute;
+      left:0; bottom:-2px;
+      width:0; height:2px;
+      background:var(--brand-red);
+      transition:width .25s ease;
+    }
+    footer a.footer-link:hover{
+      color:var(--brand-red);
+    }
+    footer a.footer-link:hover::after{ width:100%; }
+
+    .social-icon{
+      display:inline-block;
+      margin-left:10px;
+      font-size:1.1rem;
+      color:var(--ink-2);
+      transition: transform .2s ease, color .25s ease, text-shadow .2s ease;
+    }
+    .social-icon:hover{
+      color:var(--brand-red);
+      transform: translateY(-1px) scale(1.06);
+      text-shadow:0 0 10px rgba(230,0,0,.15);
+    }
+
+    .close-btn {
+      position: fixed;
+      top: 80px;
+      right: 25px;
+      z-index: 2000;
+      background: var(--brand-red);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .close-btn:hover {
+      background: var(--brand-red-dark);
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="splash" id="splash">
+    <div class="logo-wrap text-center">
+      <img src="Files/logo.png" alt="AI Medic Logo" class="app-logo"/>
+      <div class="brand-title">AI MEDIC</div>
+      <div class="tagline">Stay calm, act fast – your AI medic is here.</div>
+      <div class="dots"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-4">
+      <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+        <img src="Files/logo.png" width="32" alt="AI Medic Logo" class="me-2">
+        <span class="text-danger">AI MEDIC</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="instructions.html">Instruction</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <button class="close-btn" id="closeBtn" title="Go to Instructions">
+    <i class="fas fa-times"></i>
+  </button>
+
+  <!-- Hero -->
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-12 text-center">
+        <h2 class="main-heading">😮‍💨 First Aid for Asthma Attack</h2>
+        <p>An asthma attack happens when the airways tighten and swell, making breathing difficult. During an attack, stay calm, help the person sit upright, and encourage slow, steady breathing. Use a prescribed inhaler immediately. If the person’s breathing does not improve or they can’t speak, call emergency help right away.</p>
+      </div>
+<hr>
+      <div class="col-md-6">
+        <h3 class="section-heading">⚠️ Common Causes of Asthma Attacks</h3>
+        <ul>
+          <li>Exposure to allergens such as dust, pollen, or smoke</li>
+          <li>Cold air or sudden temperature changes</li>
+          <li>Exercise without proper warm-up</li>
+          <li>Respiratory infections (like cold or flu)</li>
+          <li>Strong emotions or stress</li>
+          <li>Chemical fumes, perfume, or air pollution</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Asthma Attack/1.PNG" alt="Asthma Attack Causes" class="w-100 img-fluid rounded shadow">
+      </div>
+
+      <div class="col-md-6 text-center">
+        <img src="Files/Asthma Attack/2.PNG" alt="Asthma Attack First Aid" class="w-100 img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🚑 What to Do During an Asthma Attack</h3>
+        <ul>
+          <li>Stay calm and reassure the person</li>
+          <li>Help them sit upright — never lie down</li>
+          <li>Encourage slow, steady breathing</li>
+          <li>Use their prescribed reliever inhaler (usually blue) immediately</li>
+          <li>If no improvement after 5–10 minutes, give another inhaler dose</li>
+          <li>Call for emergency medical help if breathing remains difficult</li>
+        </ul>
+      </div>
+
+      <div class="col-md-6">
+        <h3 class="section-heading">❌ What NOT to Do</h3>
+        <ul>
+          <li>Do not make the person lie down</li>
+          <li>Do not leave the person alone</li>
+          <li>Do not give food or drink during the attack</li>
+          <li>Do not assume they’ll recover without medication</li>
+          <li>Do not panic — stay calm and focused</li>
+        </ul>
+      </div>
+      <div class="col-md-6 text-center">
+        <img src="Files/Asthma Attack/3.PNG" alt="Asthma Precautions" class="img-fluid rounded shadow">
+      </div>
+
+      <div class="col-md-6 text-center">
+        <img src="Files/Asthma Attack/4.PNG" alt="Seek Help" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
+        <ul>
+          <li>If breathing does not improve after using the inhaler</li>
+          <li>If the person cannot speak or feels drowsy</li>
+          <li>If lips or face turn blue (cyanosis)</li>
+          <li>If the attack is the person’s first</li>
+          <li>If symptoms return soon after using the inhaler</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<!-- Prevention -->
+<div class="container py-5">
+  <div class="row g-4">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🧾 Asthma Prevention Tips</h2>
+      <p>Asthma prevention focuses on avoiding triggers and keeping your lungs healthy through proper medication, lifestyle, and environmental control.</p>
+    </div>
+    <hr>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">💨 Avoid Triggers</h3>
+      <ul>
+        <li>Stay away from smoke, strong perfumes, or chemical fumes.</li>
+        <li>Keep your home clean and dust-free.</li>
+        <li>Use an air purifier during high pollen seasons.</li>
+        <li>Cover your nose and mouth in cold air.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Asthma Attack/Prevention1.jpg" alt="Avoid Triggers" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="col-md-6 text-center">
+      <img src="Files/Asthma Attack/Prevention2.PNG" alt="Healthy Lifestyle" class="w-75 img-fluid rounded shadow">
+    </div>
+    <div class="col-md-6">
+      <h3 class="section-heading">🏃‍♀️ Maintain a Healthy Lifestyle</h3>
+      <ul>
+        <li>Exercise regularly with your doctor’s advice.</li>
+        <li>Eat a balanced diet rich in fruits and vegetables.</li>
+        <li>Manage stress with breathing or relaxation exercises.</li>
+        <li>Get flu shots annually to prevent respiratory infections.</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6">
+      <h3 class="section-heading">💊 Follow Your Asthma Action Plan</h3>
+      <ul>
+        <li>Take your prescribed controller medication daily if recommended.</li>
+        <li>Always keep your reliever inhaler accessible.</li>
+        <li>Track symptoms and peak flow readings regularly.</li>
+        <li>Visit your doctor for regular asthma reviews.</li>
+      </ul>
+    </div>
+    <div class="col-md-6 text-center">
+      <img src="Files/Asthma Attack/Prevention3.jpg" alt="Asthma Action Plan" class="img-fluid rounded shadow">
+    </div>
+  </div>
+</div>
+
+<!-- Medicine -->
+<div class="container py-2">
+  <div class="row g-1">
+    <hr>
+    <div class="col-12 text-center">
+      <h2 class="main-heading">🩺 Treatment & Medication</h2>
+      <p>Medicines or inhalers that may be prescribed to control asthma and prevent future attacks.</p>
+    </div>
+    <hr>
+
+    <div class="col-12">
+      <h3 class="section-heading">💨 Common Asthma Medications</h3>
+      <ul>
+        <li><b>Reliever inhalers</b> (e.g., Salbutamol): provide quick relief during an attack.</li>
+        <li><b>Preventer inhalers</b> (e.g., Beclometasone): reduce inflammation and prevent future attacks.</li>
+        <li><b>Combination inhalers</b>: contain both reliever and preventer medicine.</li>
+        <li><b>Oral medications</b> (e.g., Montelukast): used for long-term control.</li>
+      </ul>
+      <p>Remember: Always use your inhaler exactly as prescribed by your doctor. Do not overuse reliever inhalers.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Download Button -->
+<div class="text-center mb-5">
+  <a href="pdfs/asthma attack.pdf" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
+
+<!-- Footer -->
+<footer class="text-dark pt-5 pb-4">
+  <div class="container text-center text-md-start">
+    <div class="row text-md-left">
+      <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
+        <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
+        <p><a class="footer-link d-inline" href="index.html">AI Medic</a> provides smart, instant, and reliable health guidance. Our mission is to make emergency first aid knowledge accessible to everyone.</p>
+      </div>
+
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li class="mb-3"><a href="index.html" class="footer-link">HOME</a></li>
+          <li class="mb-3"><a href="instructions.html" class="footer-link">INSTRUCTION</a></li>
+          <li class="mb-3"><a href="about.html" class="footer-link">ABOUT US</a></li>
+          <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
+        <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
+        <p><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
+        <p><i class="fas fa-envelope me-2 mb-2"></i> support@aimedic.com</p>
+        <p><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
+        <div>
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <hr class="mt-4 mb-3"/>
+    <div class="text-center small">
+      © 2025 <b>AI MEDIC</b>. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Splash screen fade-out
+  window.addEventListener("load", () => {
+    const splash = document.getElementById("splash");
+    setTimeout(() => {
+      splash.style.transition = "opacity 0.5s ease";
+      splash.style.opacity = 0;
+      setTimeout(() => splash.remove(), 600);
+    }, 1000);
+  });
+
+  // GSAP animations
+  gsap.utils.toArray(".section-heading, .main-heading, p, li, img").forEach(el => {
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: "top 90%" },
+      opacity: 0,
+      y: 30,
+      duration: 0.6,
+      ease: "power2.out"
+    });
+  });
+
+  // Close button visibility
+  window.addEventListener("scroll", () => {
+    const closeBtn = document.getElementById("closeBtn");
+    if (window.scrollY > 300) {
+      closeBtn.style.opacity = "1";
+      closeBtn.style.visibility = "visible";
+    } else {
+      closeBtn.style.opacity = "0";
+      closeBtn.style.visibility = "hidden";
+    }
+  });
+
+  // Redirect close button
+  document.getElementById("closeBtn").addEventListener("click", () => {
+    window.location.href = "instructions.html";
+  });
+</script>
+
+</body>
+</html>
