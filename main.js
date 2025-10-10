@@ -285,3 +285,118 @@
     }
   });
 
+
+    const signInBtn = document.getElementById("signInBtn");
+    const profileContainer = document.getElementById("profileContainer");
+    const username = document.getElementById("username");
+    const profilePic = document.getElementById("profilePic");
+
+    const profileName = document.getElementById("profileName");
+    const profileEmail = document.getElementById("profileEmail");
+    const profilePhone = document.getElementById("profilePhone");
+    const profileAge = document.getElementById("profileAge");
+    const modalProfilePic = document.getElementById("modalProfilePic");
+
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+    const showRegister = document.getElementById("showRegister");
+    const showLogin = document.getElementById("showLogin");
+    const signOutBtn = document.getElementById("signOutBtn");
+
+    // Switch forms
+    showRegister.addEventListener("click", () => {
+      loginForm.classList.add("d-none");
+      registerForm.classList.remove("d-none");
+    });
+    showLogin.addEventListener("click", () => {
+      registerForm.classList.add("d-none");
+      loginForm.classList.remove("d-none");
+    });
+
+    // Save image as Base64
+    function getBase64(file, callback) {
+      const reader = new FileReader();
+      reader.onload = () => callback(reader.result);
+      reader.readAsDataURL(file);
+    }
+
+    // ✅ Register
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("regName").value;
+      const email = document.getElementById("regEmail").value;
+      const password = document.getElementById("regPassword").value;
+      const phone = document.getElementById("regPhone").value;
+      const age = document.getElementById("regAge").value;
+      const file = document.getElementById("regPic").files[0];
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      // Check if user already exists
+      if (users.some(u => u.email === email)) {
+        alert("User already exists with this email!");
+        return;
+      }
+
+      function saveUserData(pic) {
+        const newUser = { name, email, password, phone, age, pic };
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+        localStorage.setItem("currentUser", JSON.stringify(newUser)); // auto login
+        showProfile(newUser);
+        bootstrap.Modal.getInstance(document.getElementById("authModal")).hide();
+        registerForm.reset();
+      }
+
+      if (file) {
+        getBase64(file, (base64) => saveUserData(base64));
+      } else {
+        saveUserData("");
+      }
+    });
+
+    // ✅ Login
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const user = users.find(u => u.email === email && u.password === password);
+
+      if (user) {
+        localStorage.setItem("currentUser", JSON.stringify(user));
+        showProfile(user);
+        bootstrap.Modal.getInstance(document.getElementById("authModal")).hide();
+        loginForm.reset();
+      } else {
+        alert("Invalid credentials!");
+      }
+    });
+
+    // ✅ Show profile
+    function showProfile(user) {
+      signInBtn.classList.add("d-none");
+      profileContainer.classList.remove("d-none");
+      username.textContent = user.name;
+      profilePic.src = user.pic || "https://via.placeholder.com/35";
+      profileName.textContent = user.name;
+      profileEmail.textContent = user.email;
+      profilePhone.textContent = user.phone;
+      profileAge.textContent = user.age;
+      modalProfilePic.src = user.pic || "https://via.placeholder.com/80";
+    }
+
+    // ✅ Sign out
+    signOutBtn.addEventListener("click", () => {
+      localStorage.removeItem("currentUser");
+      profileContainer.classList.add("d-none");
+      signInBtn.classList.remove("d-none");
+      bootstrap.Modal.getInstance(document.getElementById("profileModal")).hide();
+    });
+
+    // ✅ Auto login if user exists
+    window.addEventListener("DOMContentLoaded", () => {
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      if (currentUser) showProfile(currentUser);
+    });
