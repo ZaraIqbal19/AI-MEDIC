@@ -38,7 +38,7 @@
     .navbar-brand .text-danger,
     .navbar-brand,
     .nav-link:hover{ color:var(--brand-red) !important; }
-
+  .header .container{ max-width:1100px; }
     .hero-section{ padding:60px 15px; }
     .hero-image img{
       width:100%;
@@ -122,6 +122,7 @@
       position:relative;
       transition:color .25s ease;
     }
+    /* subtle underline grow on hover */
     footer a.footer-link::after{
       content:'';
       position:absolute;
@@ -135,6 +136,7 @@
     }
     footer a.footer-link:hover::after{ width:100%; }
 
+    /* Social icons row + hover */
     .social-icon{
       display:inline-block;
       margin-left:10px;
@@ -142,13 +144,19 @@
       color:var(--ink-2);
       transition: transform .2s ease, color .25s ease, text-shadow .2s ease;
     }
+    .social-icon:first-child{ margin-left:0; }
     .social-icon:hover{
       color:var(--brand-red);
       transform: translateY(-1px) scale(1.06);
       text-shadow:0 0 10px rgba(230,0,0,.15);
     }
-
-    .close-btn {
+    /* Fine-tuned alignment & spacing */
+    @media (max-width: 991.98px){
+      .hero-section .row > [class*="col-"]{ text-align:center; }
+      .hero-section .btn{ margin-bottom:10px; }
+      .social-icon{ margin:0 8px; }
+    }
+        .close-btn {
       position: fixed;
       top: 80px;
       right: 25px;
@@ -173,6 +181,7 @@
       background: var(--brand-red-dark);
       transform: scale(1.08);
     }
+  
   </style>
 </head>
 <body>
@@ -206,11 +215,9 @@
       </div>
     </nav>
   </div>
-
   <button class="close-btn" id="closeBtn" title="Go to Instructions">
     <i class="fas fa-times"></i>
   </button>
-
   <!-- Hero -->
   <div class="container py-5">
     <div class="row g-4">
@@ -222,20 +229,20 @@
       <div class="col-md-6">
         <h3 class="section-heading">⚠️ Common Causes of Asthma Attacks</h3>
         <ul>
-          <li>Exposure to allergens such as dust, pollen, or smoke</li>
-          <li>Cold air or sudden temperature changes</li>
-          <li>Exercise without proper warm-up</li>
-          <li>Respiratory infections (like cold or flu)</li>
-          <li>Strong emotions or stress</li>
-          <li>Chemical fumes, perfume, or air pollution</li>
+          <li class="my-4">Exposure to allergens such as dust, pollen, or smoke</li>
+          <li class="my-4">Cold air or sudden temperature changes</li>
+          <li class="my-4">Exercise without proper warm-up</li>
+          <li class="my-4">Respiratory infections (like cold or flu)</li>
+          <li class="my-4">Strong emotions or stress</li>
+          <li class="my-4">Chemical fumes, perfume, or air pollution</li>
         </ul>
       </div>
       <div class="col-md-6 text-center">
-        <img src="Files/Asthma Attack/1.PNG" alt="Asthma Attack Causes" class="w-100 img-fluid rounded shadow">
+        <img src="Files/Asthma Attacks/1.jpg" alt="Asthma Attack Causes" class="w-100  rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Asthma Attack/2.PNG" alt="Asthma Attack First Aid" class="w-100 img-fluid rounded shadow">
+        <img src="Files/Asthma Attacks/2.jpg" alt="Asthma Attack First Aid" class="w-100 img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🚑 What to Do During an Asthma Attack</h3>
@@ -260,11 +267,11 @@
         </ul>
       </div>
       <div class="col-md-6 text-center">
-        <img src="Files/Asthma Attack/3.PNG" alt="Asthma Precautions" class="img-fluid rounded shadow">
+        <img src="Files/Asthma Attacks/3.PNG" alt="Asthma Precautions" class="img-fluid rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Asthma Attack/4.PNG" alt="Seek Help" class="img-fluid rounded shadow">
+        <img src="Files/Asthma Attacks/4.jpg" alt="Seek Help" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🆘 When to Seek Medical Help</h3>
@@ -299,11 +306,11 @@
       </ul>
     </div>
     <div class="col-md-6 text-center">
-      <img src="Files/Asthma Attack/Prevention1.jpg" alt="Avoid Triggers" class="img-fluid rounded shadow">
+      <img src="Files/Asthma Attacks/Prevention1.jpg" alt="Avoid Triggers" class="img-fluid rounded shadow">
     </div>
 
     <div class="col-md-6 text-center">
-      <img src="Files/Asthma Attack/Prevention2.PNG" alt="Healthy Lifestyle" class="w-75 img-fluid rounded shadow">
+      <img src="Files/Asthma Attacks/Prevention2.jpg" alt="Healthy Lifestyle" class="w-75 img-fluid rounded shadow">
     </div>
     <div class="col-md-6">
       <h3 class="section-heading">🏃‍♀️ Maintain a Healthy Lifestyle</h3>
@@ -325,7 +332,7 @@
       </ul>
     </div>
     <div class="col-md-6 text-center">
-      <img src="Files/Asthma Attack/Prevention3.jpg" alt="Asthma Action Plan" class="img-fluid rounded shadow">
+      <img src="Files/Asthma Attacks/Prevention3.jpg" alt="Asthma Action Plan" class="img-fluid rounded shadow">
     </div>
   </div>
 </div>
@@ -353,94 +360,315 @@
   </div>
 </div>
 
-<!-- Download Button -->
+<!-- Download Button Section -->
 <div class="text-center mb-5">
-  <a href="pdfs/asthma attack.pdf" download
+  <a href="pdfs/adult chocking.pdf" download
      class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
     <i class="fas fa-file-pdf"></i>
     DOWNLOAD PRINTABLE VERSION
   </a>
 </div>
+  <!-- Footer -->
+  <footer class="text-dark pt-5 pb-4">
+    <div class="container text-center text-md-start">
+      <div class="row text-md-left">
+        <!-- LOGO & DESCRIPTION -->
+        <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
+          <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
+          <p>
+            <a class="footer-link d-inline" href="index.html">AI Medic</a> is a smart medical assistant designed to provide instant, reliable, and easy-to-follow health guidance. Our mission is to make emergency help and first-aid knowledge accessible to everyone, anytime and anywhere.
+          </p>
+        </div>
+        <!-- WEBSITE LINKS -->
+        <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+          <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
+          <ul class="list-unstyled">
+            <li class="mb-3"><a href="index.html" class="footer-link">HOME</a></li>
+            <li class="mb-3"><a href="instructions.html" class="footer-link">INSTRUCTION</a></li>
+            <li class="mb-3"><a href="about.html" class="footer-link">ABOUT US</a></li>
+            <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
+          </ul>
+        </div>
+        <!-- CONTACT INFO -->
+        <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
+          <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
+          <p class="text-dark-50"><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
+          <p class="text-dark-50"><i class="fas fa-envelope me-2 mb-2"></i> aimedic807@gmail.com</p>
+          <p class="text-dark-50"><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
+        </div>
 
-<!-- Footer -->
-<footer class="text-dark pt-5 pb-4">
-  <div class="container text-center text-md-start">
-    <div class="row text-md-left">
-      <div class="col-md-5 col-lg-5 col-xl-5 mx-auto mt-3 px-5">
-        <h5 class="text-uppercase fw-bold mb-3 footertext">AI MEDIC</h5>
-        <p><a class="footer-link d-inline" href="index.html">AI Medic</a> provides smart, instant, and reliable health guidance. Our mission is to make emergency first aid knowledge accessible to everyone.</p>
-      </div>
+        <a href="Code Crafters.html"
+           class="text-uppercase fw-bold text-center d-block mt-3 mb-3 fs-5 footertext text-decoration-none personaldetails">
+          <span class="border-top border-bottom border-info py-2 d-inline-block">code crafters</span>
+        </a>
 
-      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
-        <h6 class="text-uppercase fw-bold mb-3 footertext">Quick Links</h6>
-        <ul class="list-unstyled">
-          <li class="mb-3"><a href="index.html" class="footer-link">HOME</a></li>
-          <li class="mb-3"><a href="instructions.html" class="footer-link">INSTRUCTION</a></li>
-          <li class="mb-3"><a href="about.html" class="footer-link">ABOUT US</a></li>
-          <li class="mb-3"><a href="contact.html" class="footer-link">CONTACT</a></li>
-        </ul>
-      </div>
+        <hr class="my-4 text-dark-50">
 
-      <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mt-3 mb-2">
-        <h6 class="text-uppercase fw-bold mb-3 footertext">Contact Us</h6>
-        <p><i class="fas fa-map-marker-alt me-2 mb-2"></i> Karachi, Pakistan</p>
-        <p><i class="fas fa-envelope me-2 mb-2"></i> support@aimedic.com</p>
-        <p><i class="fas fa-phone me-2 mb-2"></i> +92 300 1234567</p>
-        <div>
-          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <div class="row align-items-center">
+          <div class="col-md-6 col-lg-8">
+            <p class="text-dark-50 mb-0">
+              © 2025 <span class="footertext"><a href="index.html" class="footer-link d-inline">AI Medic</a></span> all rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-end">
+            <!-- Social icons: will animate one-by-one -->
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.whatsapp.com/" target="_blank" class="social-icon" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/" target="_blank" class="social-icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          </div>
         </div>
       </div>
     </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <hr class="mt-4 mb-3"/>
-    <div class="text-center small">
-      © 2025 <b>AI MEDIC</b>. All Rights Reserved.
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Splash screen fade-out
-  window.addEventListener("load", () => {
-    const splash = document.getElementById("splash");
-    setTimeout(() => {
-      splash.style.transition = "opacity 0.5s ease";
-      splash.style.opacity = 0;
-      setTimeout(() => splash.remove(), 600);
-    }, 1000);
-  });
-
-  // GSAP animations
-  gsap.utils.toArray(".section-heading, .main-heading, p, li, img").forEach(el => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: "top 90%" },
-      opacity: 0,
-      y: 30,
-      duration: 0.6,
-      ease: "power2.out"
+  <script>
+    // Splash (kept as-is functionally)
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+      }, 600);
     });
-  });
+    // Live Clock
+    setInterval(() => {
+      let now = new Date();
+      document.getElementById("livetime").innerText = now.toLocaleTimeString();
+    }, 1000);
 
-  // Close button visibility
-  window.addEventListener("scroll", () => {
-    const closeBtn = document.getElementById("closeBtn");
-    if (window.scrollY > 300) {
-      closeBtn.style.opacity = "1";
-      closeBtn.style.visibility = "visible";
-    } else {
-      closeBtn.style.opacity = "0";
-      closeBtn.style.visibility = "hidden";
+    // ===== GSAP Animations (Desktop + Mobile) =====
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Respect reduced motion
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ease = "power2.out";
+
+    // Initial (on load) – header + navbar
+    if(!reduceMotion){
+      gsap.from(".navbar-brand", {y:-12, opacity:0, duration:.6, delay:.1, ease});
+      gsap.from(".navbar-nav .nav-link", {y:-10, opacity:0, duration:.5, stagger:.08, delay:.15, ease});
+      gsap.from("#livetime", {y:-8, opacity:0, duration:.6, stagger:.15, delay:.2, ease});
+    }
+
+    // MatchMedia for desktop vs mobile subtle differences
+    const mm = gsap.matchMedia();
+
+    // Desktop (>=992px)
+    mm.add("(min-width: 992px)", () => {
+      if(reduceMotion) return;
+
+      // Hero image + text
+      gsap.from(".hero-image img", {
+        x:-60, opacity:0, duration:1, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 80%" }
+      });
+      gsap.from(".hero-section h2", {
+        y:30, opacity:0, duration:.9, delay:.1, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 82%" }
+      });
+      gsap.from(".hero-section p", {
+        y:24, opacity:0, duration:.9, delay:.2, ease,
+        scrollTrigger:{ trigger:".hero-section p", start:"top 85%" }
+      });
+      gsap.from(".hero-section .btn", {
+        scale:.94, opacity:0, duration:.7, stagger:.15, delay:.25, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 88%" }
+      });
+
+      // Footer headings + text
+      gsap.from("footer h5, footer h6", {
+        y:28, opacity:0, duration:.9, stagger:.15, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 92%" }
+      });
+      gsap.from("footer .footer-link, footer p", {
+        y:18, opacity:0, duration:.8, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 95%" }
+      });
+
+      // Social icons one-by-one
+      gsap.from("footer .social-icon", {
+        y:12, opacity:0, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Mobile (<992px) – gentler
+    mm.add("(max-width: 991.98px)", () => {
+      if(reduceMotion) return;
+
+      gsap.from(".hero-image img", {
+        opacity:0, scale:.98, duration:.9, ease,
+        scrollTrigger:{ trigger:".hero-image", start:"top 85%" }
+      });
+      gsap.from(".hero-section h2, .hero-section p", {
+        opacity:0, y:16, duration:.8, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section h2", start:"top 88%" }
+      });
+      gsap.from(".hero-section .btn", {
+        opacity:0, y:12, duration:.6, stagger:.12, ease,
+        scrollTrigger:{ trigger:".hero-section .btn", start:"top 92%" }
+      });
+      gsap.from("footer h5, footer h6, footer .footer-link, footer p", {
+        opacity:0, y:14, duration:.7, stagger:.08, ease,
+        scrollTrigger:{ trigger:"footer", start:"top 96%" }
+      });
+      gsap.from("footer .social-icon", {
+        opacity:0, y:10, duration:.55, stagger:.1, ease,
+        scrollTrigger:{ trigger:"footer .social-icon", start:"top 98%" }
+      });
+    });
+
+    // Hover micro-interactions for social icons (extra subtle)
+    document.querySelectorAll(".social-icon").forEach((el) => {
+      el.addEventListener("mouseenter", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:-2, duration:.2, ease:"power1.out" });
+      });
+      el.addEventListener("mouseleave", () => {
+        if(reduceMotion) return;
+        gsap.to(el, { y:0, duration:.2, ease:"power1.out" });
+      });
+    });
+
+    // Scroll-to-top button show/hide via ScrollTrigger
+    if(!reduceMotion){
+      ScrollTrigger.create({
+        start: 300,
+        onEnter: ()=> showToTop(true),
+        onLeaveBack: ()=> showToTop(false)
+      });
+    }
+    function showToTop(show){
+      const btn = document.getElementById("toTop");
+      if(show){
+        btn.style.visibility = "visible";
+        gsap.to(btn, {opacity:1, y:0, duration:.25, ease:"power1.out"});
+      }else{
+        gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
+      }
+    }
+    // <!-- GSAP Animations -->
+  gsap.registerPlugin(ScrollTrigger);
+  ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
+    "(min-width: 769px)": function () {
+      // Animate headings
+      gsap.utils.toArray(".section-heading").forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+      // Animate images differently
+      gsap.utils.toArray("img").forEach((img, i) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
+        });
+      });
+      // Animate list items
+      gsap.utils.toArray("ul li").forEach((li) => {
+        gsap.from(li, {
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+    },
+    // ✅ Mobile (max-width: 768px)
+    "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
+      gsap.utils.toArray(".section-heading").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
+        });
+      });
+      // Mobile images - scale in (instead of slide)
+      gsap.utils.toArray("img").forEach((img) => {
+        gsap.from(img, {
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
+        });
+      });
+      // Mobile list items - simple fade in with stagger
+      gsap.utils.toArray("ul").forEach((ul) => {
+        gsap.from(ul.children, {
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
+        });
+      });
     }
   });
-
-  // Redirect close button
-  document.getElementById("closeBtn").addEventListener("click", () => {
-    window.location.href = "instructions.html";
+// <!-- GSAP Animation for Button -->
+  gsap.from(".download-btn", {
+    scrollTrigger: {
+      trigger: ".download-btn",
+      start: "top 90%",
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
   });
-</script>
 
+  // Hover animation
+  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
+    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
+  });
+  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
+    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
+  });
+    // Splash close
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
+        gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
+      }, 800);
+    });
+
+    // Redirect on click
+    document.getElementById("closeBtn").addEventListener("click", () => {
+      window.location.href = "instructions.html";
+    });
+  </script>
 </body>
 </html>

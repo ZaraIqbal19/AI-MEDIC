@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AI MEDIC — Hyperventilation & Panic Attack First Aid</title>
+  <title>AI MEDIC</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
@@ -181,6 +181,13 @@
       background: var(--brand-red-dark);
       transform: scale(1.08);
     }
+              /* ✅ Uniform Image Size */
+    .img-fluid, 
+    .w-100 {
+      height: 50vh;          /* Set desired uniform height */
+      object-fit: cover;      /* Keeps images proportional and cropped neatly */
+      width: 100%;            /* Full width in their container */
+    }
   </style>
 </head>
 <body>
@@ -217,7 +224,6 @@
   <button class="close-btn" id="closeBtn" title="Go to Instructions">
     <i class="fas fa-times"></i>
   </button>
-
   <!-- Hero -->
   <div class="container py-5">
     <div class="row g-4 hero-section">
@@ -237,12 +243,11 @@
           <li>Underlying medical conditions (less commonly)</li>
         </ul>
       </div>
-      <div class="col-md-6 text-center hero-image">
-        <img src="Files/Hyperventilation/1.png" alt="Person experiencing panic attack" class="w-100 img-fluid rounded shadow">
+       <div class="col-md-6 text-center">
+        <img src="Files/Panic/Panic Causes.jpg" alt="Calm breathing guidance" class="w-100 img-fluid rounded shadow">
       </div>
-
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/2.png" alt="Calm breathing guidance" class="w-100 img-fluid rounded shadow">
+        <img src="Files/Panic/2.jpg" alt="Calm breathing guidance" class="w-100 img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🩺 Recognize the Symptoms</h3>
@@ -269,11 +274,11 @@
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/3.png" alt="Helping someone breathe slowly" class="img-fluid rounded shadow">
+        <img src="Files/Panic/Stay calm.jpg" alt="Helping someone breathe slowly" class="img-fluid rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/4.png" alt="Reassuring someone" class="img-fluid rounded shadow">
+        <img src="Files/Panic/4.webp" alt="Reassuring someone" class="img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">❌ What NOT to Do</h3>
@@ -293,6 +298,9 @@
           <li>If it’s their first-ever episode and cause is uncertain</li>
           <li>If they are unable to speak or respond, or you suspect drug or alcohol involvement</li>
         </ul>
+      </div>
+          <div class="col-md-6 text-center">
+        <img src="Files/Panic/Panic attack.jpg" alt="Reassuring someone" class="img-fluid rounded shadow">
       </div>
     </div>
   </div>
@@ -317,11 +325,11 @@
         </ul>
       </div>
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/Prevention1.jpg" alt="Mindfulness and relaxation" class="img-fluid rounded shadow">
+        <img src="Files/Panic/5.jpg" alt="Mindfulness and relaxation" class="img-fluid rounded shadow">
       </div>
 
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/Prevention2.jpg" alt="Avoiding stimulants" class="w-50 img-fluid rounded shadow">
+        <img src="Files/Panic/Prevention2.jpg" alt="Avoiding stimulants" class="w-50 img-fluid rounded shadow">
       </div>
       <div class="col-md-6">
         <h3 class="section-heading">🛠 Build a Coping Toolkit</h3>
@@ -342,7 +350,7 @@
         </ul>
       </div>
       <div class="col-md-6 text-center">
-        <img src="Files/Hyperventilation/Prevention3.jpg" alt="Supportive environment" class="img-fluid rounded shadow">
+        <img src="Files/Panic/7.jpg" alt="Supportive environment" class="img-fluid rounded shadow">
       </div>
     </div>
   </div>
@@ -365,15 +373,14 @@
     </div>
   </div>
 
-  <!-- Download Button Section -->
-  <div class="text-center mb-5">
-    <a href="pdfs/hyperventilation_panic_first_aid.pdf" download
-       class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
-      <i class="fas fa-file-pdf"></i>
-      DOWNLOAD PRINTABLE GUIDE
-    </a>
-  </div>
-
+<!-- Download Button Section -->
+<div class="text-center mb-5">
+  <a href="pdfs/adult chocking.pdf" download
+     class="btn btn-danger btn-lg px-4 py-3 rounded-pill shadow-lg d-inline-flex align-items-center gap-2 download-btn">
+    <i class="fas fa-file-pdf"></i>
+    DOWNLOAD PRINTABLE VERSION
+  </a>
+</div>
   <!-- Footer -->
   <footer class="text-dark pt-5 pb-4">
     <div class="container text-center text-md-start">
@@ -428,7 +435,6 @@
       </div>
     </div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
@@ -438,11 +444,10 @@
         document.getElementById("splash").style.display = "none";
       }, 600);
     });
-    // Live Clock (if you add an element with id="livetime" it will show time)
+    // Live Clock
     setInterval(() => {
       let now = new Date();
-      const el = document.getElementById("livetime");
-      if(el) el.innerText = now.toLocaleTimeString();
+      document.getElementById("livetime").innerText = now.toLocaleTimeString();
     }, 1000);
 
     // ===== GSAP Animations (Desktop + Mobile) =====
@@ -549,7 +554,6 @@
     }
     function showToTop(show){
       const btn = document.getElementById("toTop");
-      if(!btn) return;
       if(show){
         btn.style.visibility = "visible";
         gsap.to(btn, {opacity:1, y:0, duration:.25, ease:"power1.out"});
@@ -557,71 +561,119 @@
         gsap.to(btn, {opacity:0, y:12, duration:.25, ease:"power1.in", onComplete:()=>{ btn.style.visibility = "hidden"; }});
       }
     }
-
-  // Additional GSAP matchMedia section (safe fallback)
+    // <!-- GSAP Animations -->
   gsap.registerPlugin(ScrollTrigger);
   ScrollTrigger.matchMedia({
+    // For desktop (min-width: 769px)
     "(min-width: 769px)": function () {
+      // Animate headings
       gsap.utils.toArray(".section-heading").forEach((el, i) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: "top 80%" },
-          y: 50, opacity: 0, duration: 0.8, ease: "power2.out"
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+          },
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out"
         });
       });
+      // Animate images differently
       gsap.utils.toArray("img").forEach((img, i) => {
         gsap.from(img, {
-          scrollTrigger: { trigger: img, start: "top 85%" },
-          x: i % 2 === 0 ? -100 : 100, opacity: 0, duration: 1, ease: "power3.out"
+          scrollTrigger: {
+            trigger: img,
+            start: "top 85%",
+          },
+          x: i % 2 === 0 ? -100 : 100, // alternate left & right
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out"
         });
       });
+      // Animate list items
       gsap.utils.toArray("ul li").forEach((li) => {
         gsap.from(li, {
-          scrollTrigger: { trigger: li, start: "top 95%" },
-          x: -20, opacity: 0, duration: 0.6, ease: "power1.out"
+          scrollTrigger: {
+            trigger: li,
+            start: "top 95%",
+          },
+          x: -20,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
         });
       });
     },
+    // ✅ Mobile (max-width: 768px)
     "(max-width: 768px)": function () {
+      // Mobile headings - fade up faster
       gsap.utils.toArray(".section-heading").forEach((el) => {
         gsap.from(el, {
-          scrollTrigger: { trigger: el, start: "top 85%" },
-          y: 30, opacity: 0, duration: 0.6, ease: "power1.out"
+          scrollTrigger: {
+            trigger: el,
+            start: "top 85%",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.6,
+          ease: "power1.out"
         });
       });
+      // Mobile images - scale in (instead of slide)
       gsap.utils.toArray("img").forEach((img) => {
         gsap.from(img, {
-          scrollTrigger: { trigger: img, start: "top 90%" },
-          scale: 0.85, opacity: 0, duration: 0.8, ease: "back.out(1.7)"
+          scrollTrigger: {
+            trigger: img,
+            start: "top 90%",
+          },
+          scale: 0.85,
+          opacity: 0,
+          duration: 0.8,
+          ease: "back.out(1.7)"
         });
       });
+      // Mobile list items - simple fade in with stagger
       gsap.utils.toArray("ul").forEach((ul) => {
         gsap.from(ul.children, {
-          scrollTrigger: { trigger: ul, start: "top 90%" },
-          opacity: 0, y: 15, duration: 0.5, stagger: 0.15
+          scrollTrigger: {
+            trigger: ul,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 15,
+          duration: 0.5,
+          stagger: 0.15
         });
       });
     }
   });
-
-  // Download button animation + hover
+// <!-- GSAP Animation for Button -->
   gsap.from(".download-btn", {
-    scrollTrigger: { trigger: ".download-btn", start: "top 90%" },
-    y: 50, opacity: 0, scale: 0.8, duration: 1, ease: "back.out(1.7)"
+    scrollTrigger: {
+      trigger: ".download-btn",
+      start: "top 90%",
+    },
+    y: 50,
+    opacity: 0,
+    scale: 0.8,
+    duration: 1,
+    ease: "back.out(1.7)"
   });
 
-  document.querySelectorAll(".download-btn").forEach(btn => {
-    btn.addEventListener("mouseenter", function () {
-      gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
-    });
-    btn.addEventListener("mouseleave", function () {
-      gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
-    });
+  // Hover animation
+  document.querySelector(".download-btn").addEventListener("mouseenter", function () {
+    gsap.to(this, { scale: 1.08, duration: 0.3, ease: "power1.out" });
   });
-
-    // Splash close + show close button with GSAP
+  document.querySelector(".download-btn").addEventListener("mouseleave", function () {
+    gsap.to(this, { scale: 1, duration: 0.3, ease: "power1.out" });
+  });
+    // Splash close
     window.addEventListener("load", () => {
       setTimeout(() => {
         document.getElementById("splash").style.display = "none";
+        // ✅ Show close button with GSAP
         gsap.to("#closeBtn", {opacity: 1, visibility: "visible", duration: 0.6, ease: "power2.out"});
       }, 800);
     });
